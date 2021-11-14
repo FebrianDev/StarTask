@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "839786366458",
+    "project_id": "startask-6ff75",
+    "storage_bucket": "startask-6ff75.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839786366458:android:8d2043315d0c452feb1043",
+        "android_client_info": {
+          "package_name": "com.febrian.startask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "839786366458-b9t8p8ghh3nejan5rjlsr2qmnpttpmk6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXl7h1NnuIoxvH-zOygjFyTAQu8umMN4Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "839786366458-b9t8p8ghh3nejan5rjlsr2qmnpttpmk6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
