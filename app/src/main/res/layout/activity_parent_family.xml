@@ -4,28 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".parent.ParentFamilyActivity">
 
     <Button
-        android:id="@+id/parent"
+        android:id="@+id/create"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Parent"
+        android:text="Create Family"
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/child"
+        android:id="@+id/join"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Children"
+        android:text="Join Family"
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/parent"/>
-
-
+        app:layout_constraintTop_toBottomOf="@+id/create"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

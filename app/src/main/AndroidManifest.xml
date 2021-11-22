@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StarTask">
         <activity
+            android:name=".parent.JoinFamilyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".parent.CreateFamilyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".parent.ParentFamilyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".parent.ParentActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -19,5 +31,8 @@
             </intent-filter>
         </activity>
     </application>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
