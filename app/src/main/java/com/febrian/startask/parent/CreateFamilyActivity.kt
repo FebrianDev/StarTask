@@ -2,6 +2,9 @@ package com.febrian.startask.parent
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.febrian.startask.databinding.ActivityCreateFamilyBinding
@@ -15,22 +18,37 @@ import com.google.firebase.database.ValueEventListener
 class CreateFamilyActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCreateFamilyBinding
-
+    var role = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityCreateFamilyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val role = intent.getStringExtra(Constant.ROLE)
+        val roles = arrayListOf(Constant.FATHER, Constant.MOTHER, Constant.SON, Constant.DAUGHTER)
+
+        val adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_item, roles
+        )
+
+        binding.role.adapter = adapter
+
+        binding.role.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                role = roles[p2]
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+            }
+        }
 
         binding.create.setOnClickListener {
             val name = binding.name.text.toString()
-            val key = getKey(role.toString())
             val familyId = CreateFamilyId.get()
 
             val database =
-                FirebaseDatabase.getInstance("https://startask-6ff75-default-rtdb.asia-southeast1.firebasedatabase.app/").reference.child(
+                FirebaseDatabase.getInstance(Constant.URL).reference.child(
                     "Family"
                 ).child(familyId)
 
@@ -40,10 +58,10 @@ class CreateFamilyActivity : AppCompatActivity() {
                 database.addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         snapshot.ref.child("familyId").setValue(familyId)
-                        snapshot.ref.child(key).setValue(name)
+                        snapshot.ref.child(role).setValue(name)
 
                         //goto parent home
-                       // targetIntent()
+                        // targetIntent()
                     }
 
                     override fun onCancelled(error: DatabaseError) {
@@ -52,18 +70,6 @@ class CreateFamilyActivity : AppCompatActivity() {
 
                 })
             }
-        }
-    }
-
-    private fun getKey(role: String): String {
-        return when (role) {
-            Constant.FATHER -> {
-                "father"
-            }
-            Constant.MOTHER -> {
-                "mother"
-            }
-            else -> ""
         }
     }
 
