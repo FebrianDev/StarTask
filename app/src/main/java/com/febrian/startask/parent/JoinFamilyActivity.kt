@@ -49,17 +49,19 @@ class JoinFamilyActivity : AppCompatActivity() {
                 FirebaseDatabase.getInstance(Constant.URL).reference.child("Family").child(familyId)
             database.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    Toast.makeText(applicationContext,familyId, Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, familyId, Toast.LENGTH_LONG).show()
                     if (snapshot.exists()) {
-                        if (snapshot.child(role).value.toString() == name){
+                        if (snapshot.child(role).value.toString() == name) {
                             //if name exist
-                            Toast.makeText(applicationContext, "Name exist", Toast.LENGTH_LONG).show()
-                            //targetIntent()
-                        }else{
+                            Toast.makeText(applicationContext, "Name exist", Toast.LENGTH_LONG)
+                                .show()
+                            //targetIntent(HomeActivity(), role)
+                        } else {
                             //if name not exist
-                            Toast.makeText(applicationContext, "name not Exist!", Toast.LENGTH_LONG).show()
-                            snapshot.ref.child(role).setValue(name)
-                            //targetIntent()
+                            Toast.makeText(applicationContext, "name not Exist!", Toast.LENGTH_LONG)
+                                .show()
+                            addRole(role, name, snapshot)
+                            //targetIntent(HomeActivity(), role)
                         }
                     } else {
                         Toast.makeText(applicationContext, "FamilyId is wrong!", Toast.LENGTH_LONG)
@@ -79,5 +81,20 @@ class JoinFamilyActivity : AppCompatActivity() {
         val intent = Intent(applicationContext, activity::class.java)
         intent.putExtra(Constant.FAMILY_ID, id)
         startActivity(intent)
+    }
+
+    private fun addRole(role: String, name: String, snapshot: DataSnapshot) {
+        when (role) {
+            Constant.SON -> {
+                snapshot.ref.child("Son").child(name).setValue(name)
+            }
+            Constant.DAUGHTER -> {
+                snapshot.ref.child("Daughter").child(name).setValue(name)
+            }
+            else -> {
+                if(!snapshot.hasChild(role))
+                    snapshot.ref.child(role).setValue(name)
+            }
+        }
     }
 }
