@@ -81,17 +81,11 @@ class CreateFamilyActivity : AppCompatActivity() {
     }
 
     private fun addRole(role: String, name: String, snapshot: DataSnapshot) {
-        when (role) {
-            Constant.SON -> {
-                snapshot.ref.child("Son").child(name).child("name").setValue(name)
-            }
-            Constant.DAUGHTER -> {
-                snapshot.ref.child("Daughter").child(name).child("name").setValue(name)
-            }
-            else -> {
-                if (!snapshot.hasChild(role))
-                    snapshot.ref.child(role).setValue(name)
-            }
+        if (role == Constant.SON || role == Constant.DAUGHTER) {
+            snapshot.ref.child("Child").child(name).child("name").setValue(name)
+        } else {
+            if (!snapshot.hasChild(role))
+                snapshot.ref.child(role).setValue(name)
         }
     }
 }

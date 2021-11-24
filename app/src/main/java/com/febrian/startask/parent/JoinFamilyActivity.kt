@@ -8,6 +8,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.febrian.startask.CreateTaskActivity
 import com.febrian.startask.databinding.ActivityJoinFamilyBinding
 import com.febrian.startask.utils.Constant
 import com.google.firebase.database.DataSnapshot
@@ -55,13 +56,13 @@ class JoinFamilyActivity : AppCompatActivity() {
                             //if name exist
                             Toast.makeText(applicationContext, "Name exist", Toast.LENGTH_LONG)
                                 .show()
-                            //targetIntent(HomeActivity(), familyId,role)
+                            targetIntent(CreateTaskActivity(), familyId,role)
                         } else {
                             //if name not exist
                             Toast.makeText(applicationContext, "name not Exist!", Toast.LENGTH_LONG)
                                 .show()
                             addRole(role, name, snapshot)
-                            //targetIntent(HomeActivity(), familyId,role)
+                            targetIntent(CreateTaskActivity(), familyId,role)
                         }
                     } else {
                         Toast.makeText(applicationContext, "FamilyId is wrong!", Toast.LENGTH_LONG)
@@ -85,17 +86,11 @@ class JoinFamilyActivity : AppCompatActivity() {
     }
 
     private fun addRole(role: String, name: String, snapshot: DataSnapshot) {
-        when (role) {
-            Constant.SON -> {
-                snapshot.ref.child("Son").child(name).child("name").setValue(name)
-            }
-            Constant.DAUGHTER -> {
-                snapshot.ref.child("Daughter").child(name).child("name").setValue(name)
-            }
-            else -> {
-                if (!snapshot.hasChild(role))
-                    snapshot.ref.child(role).setValue(name)
-            }
+        if (role == Constant.SON || role == Constant.DAUGHTER) {
+            snapshot.ref.child("Child").child(name).child("name").setValue(name)
+        } else {
+            if (!snapshot.hasChild(role))
+                snapshot.ref.child(role).setValue(name)
         }
     }
 }
