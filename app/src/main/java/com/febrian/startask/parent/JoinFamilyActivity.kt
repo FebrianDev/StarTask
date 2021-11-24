@@ -55,13 +55,13 @@ class JoinFamilyActivity : AppCompatActivity() {
                             //if name exist
                             Toast.makeText(applicationContext, "Name exist", Toast.LENGTH_LONG)
                                 .show()
-                            //targetIntent(HomeActivity(), role)
+                            //targetIntent(HomeActivity(), familyId,role)
                         } else {
                             //if name not exist
                             Toast.makeText(applicationContext, "name not Exist!", Toast.LENGTH_LONG)
                                 .show()
                             addRole(role, name, snapshot)
-                            //targetIntent(HomeActivity(), role)
+                            //targetIntent(HomeActivity(), familyId,role)
                         }
                     } else {
                         Toast.makeText(applicationContext, "FamilyId is wrong!", Toast.LENGTH_LONG)
@@ -77,22 +77,23 @@ class JoinFamilyActivity : AppCompatActivity() {
         }
     }
 
-    private fun targetIntent(activity: AppCompatActivity, id: String) {
+    private fun targetIntent(activity: AppCompatActivity, id: String, role: String) {
         val intent = Intent(applicationContext, activity::class.java)
         intent.putExtra(Constant.FAMILY_ID, id)
+        intent.putExtra(Constant.ROLE, role)
         startActivity(intent)
     }
 
     private fun addRole(role: String, name: String, snapshot: DataSnapshot) {
         when (role) {
             Constant.SON -> {
-                snapshot.ref.child("Son").child(name).setValue(name)
+                snapshot.ref.child("Son").child(name).child("name").setValue(name)
             }
             Constant.DAUGHTER -> {
-                snapshot.ref.child("Daughter").child(name).setValue(name)
+                snapshot.ref.child("Daughter").child(name).child("name").setValue(name)
             }
             else -> {
-                if(!snapshot.hasChild(role))
+                if (!snapshot.hasChild(role))
                     snapshot.ref.child(role).setValue(name)
             }
         }

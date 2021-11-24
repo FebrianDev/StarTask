@@ -58,10 +58,10 @@ class CreateFamilyActivity : AppCompatActivity() {
                 database.addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         snapshot.ref.child("familyId").setValue(familyId)
-                        snapshot.ref.child(role).setValue(name)
+                        addRole(role, name, snapshot)
 
                         //goto parent home
-                        // targetIntent()
+                        //targetIntent(HomeActivity(), familyId, role)
                     }
 
                     override fun onCancelled(error: DatabaseError) {
@@ -73,9 +73,25 @@ class CreateFamilyActivity : AppCompatActivity() {
         }
     }
 
-    private fun targetIntent(activity: AppCompatActivity, id: String) {
+    private fun targetIntent(activity: AppCompatActivity, id: String, role: String) {
         val intent = Intent(applicationContext, activity::class.java)
         intent.putExtra(Constant.FAMILY_ID, id)
+        intent.putExtra(Constant.ROLE, role)
         startActivity(intent)
+    }
+
+    private fun addRole(role: String, name: String, snapshot: DataSnapshot) {
+        when (role) {
+            Constant.SON -> {
+                snapshot.ref.child("Son").child(name).child("name").setValue(name)
+            }
+            Constant.DAUGHTER -> {
+                snapshot.ref.child("Daughter").child(name).child("name").setValue(name)
+            }
+            else -> {
+                if (!snapshot.hasChild(role))
+                    snapshot.ref.child(role).setValue(name)
+            }
+        }
     }
 }
