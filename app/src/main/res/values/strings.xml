@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">StarTask</string>
+    <string name="title_activity_parent_home">ParentHomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_family">MyFamily</string>
+    <string name="add_task">ADD TASK</string>
+    <string name="title_add_task">Task</string>
+    <string name="Rewad">Reward</string>
+    <string name="add_reward">ADD REWARD</string>
 
 </resources>

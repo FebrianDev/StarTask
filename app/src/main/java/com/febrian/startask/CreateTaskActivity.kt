@@ -13,11 +13,12 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import io.paperdb.Paper
 
 class CreateTaskActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCreateTaskBinding
-
+    //var familyId = ""
     var role = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +27,8 @@ class CreateTaskActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val listRole = ArrayList<String>()
+        Paper.init(this)
+        //val familyId = Paper.book().read(Constant.FAMILY_ID, familyId)
         val familyId = intent.getStringExtra(Constant.FAMILY_ID).toString()
         val referenceGet =
             FirebaseDatabase.getInstance(Constant.URL).reference.child("Family").child("i6NaAzz")

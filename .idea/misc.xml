@@ -7,10 +7,30 @@
         <entry key="..\:/AndroidProject/StarTask/app/src/main/res/layout/activity_main.xml" value="0.19384057971014493" />
         <entry key="..\:/AndroidProject/StarTask/app/src/main/res/layout/activity_parent.xml" value="0.19384057971014493" />
         <entry key="..\:/AndroidProject/StarTask/app/src/main/res/layout/activity_parent_family.xml" value="0.12760416666666666" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/drawable/ic_baseline_family_restroom_24.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.2703125" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.2703125" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/activity_create_family.xml" value="0.16621376811594202" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/activity_create_task.xml" value="0.21195652173913043" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/activity_family.xml" value="0.21195652173913043" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/activity_join_family.xml" value="0.21195652173913043" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/activity_main.xml" value="0.16621376811594202" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/activity_parent_home.xml" value="0.11614583333333334" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/fragment_dashboard.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/fragment_family.xml" value="0.16621376811594202" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/fragment_home.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/fragment_notifications.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/fragment_parent.xml" value="0.11614583333333334" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/fragment_parent_home.xml" value="0.2056159420289855" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/fragment_parent_reward.xml" value="0.2056159420289855" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/fragment_parent_task.xml" value="0.2056159420289855" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/fragment_task.xml" value="0.21195652173913043" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/menu/bottom_nav_menu.xml" value="0.13020833333333334" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

@@ -7,6 +7,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.febrian.startask.ParentHomeActivity
 import com.febrian.startask.databinding.ActivityCreateFamilyBinding
 import com.febrian.startask.utils.Constant
 import com.febrian.startask.utils.CreateFamilyId
@@ -61,7 +62,7 @@ class CreateFamilyActivity : AppCompatActivity() {
                         addRole(role, name, snapshot)
 
                         //goto parent home
-                        //targetIntent(HomeActivity(), familyId, role)
+                        targetIntent(ParentHomeActivity(), familyId, role)
                     }
 
                     override fun onCancelled(error: DatabaseError) {
