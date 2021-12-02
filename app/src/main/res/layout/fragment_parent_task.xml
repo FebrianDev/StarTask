@@ -6,45 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".ui.ParentTaskFragment">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_show_all_task"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/btn_add_task" />
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="FamilyId:"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_task_familyId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="0dp" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="role:"
-        app:layout_constraintTop_toBottomOf="@+id/tv_task_familyId" />
-
-    <TextView
-        android:id="@+id/tv_task_role"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
         android:id="@+id/btn_add_task"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/add_task"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_task_role"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toBottomOf="@+id/rv_show_all_task"
+        app:layout_constraintTop_toTopOf="@+id/rv_show_all_task"
+        app:layout_constraintVertical_bias="0.918"
+        tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

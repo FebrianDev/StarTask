@@ -13,8 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StarTask">
         <activity
-            android:name=".ui.FamilyActivity"
-            android:exported="false" />
+            android:name=".ChildHomeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_child_home"
+            />
         <activity
             android:name=".ParentHomeActivity"
             android:exported="false"

@@ -8,7 +8,9 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.febrian.startask.ChildHomeActivity
 import com.febrian.startask.CreateTaskActivity
+import com.febrian.startask.ParentHomeActivity
 import com.febrian.startask.databinding.ActivityJoinFamilyBinding
 import com.febrian.startask.utils.Constant
 import com.google.firebase.database.DataSnapshot
@@ -56,13 +58,21 @@ class JoinFamilyActivity : AppCompatActivity() {
                             //if name exist
                             Toast.makeText(applicationContext, "Name exist", Toast.LENGTH_LONG)
                                 .show()
-                            targetIntent(CreateTaskActivity(), familyId,role)
+                                if (role == Constant.MOTHER || role == Constant.FATHER ) {
+                                        targetIntent(ChildHomeActivity(), familyId, role)
+                                    }else{
+                                        targetIntent(ChildHomeActivity(), familyId, role)
+                                    }
                         } else {
                             //if name not exist
                             Toast.makeText(applicationContext, "name not Exist!", Toast.LENGTH_LONG)
                                 .show()
                             addRole(role, name, snapshot)
-                            targetIntent(CreateTaskActivity(), familyId,role)
+                                if (role == Constant.MOTHER || role == Constant.FATHER ) {
+                                        targetIntent(ParentHomeActivity(), familyId, role)
+                                    }else{
+                                        targetIntent(ChildHomeActivity(), familyId, role)
+                                    }
                         }
                     } else {
                         Toast.makeText(applicationContext, "FamilyId is wrong!", Toast.LENGTH_LONG)

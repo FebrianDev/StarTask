@@ -11,5 +11,9 @@
     <string name="title_add_task">Task</string>
     <string name="Rewad">Reward</string>
     <string name="add_reward">ADD REWARD</string>
+    <string name="title_history">History</string>
+    <string name="title_activity_child_home">Child Home</string>
+    <string name="Name_Task">Task</string>
+    <string name="task_amount">Amount</string>
 
 </resources>

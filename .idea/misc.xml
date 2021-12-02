@@ -11,12 +11,17 @@
         <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.2703125" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.2703125" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/activity_child_home.xml" value="0.19927536231884058" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/activity_create_family.xml" value="0.16621376811594202" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/activity_create_task.xml" value="0.21195652173913043" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/activity_family.xml" value="0.21195652173913043" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/activity_join_family.xml" value="0.21195652173913043" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/activity_main.xml" value="0.16621376811594202" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/activity_parent_home.xml" value="0.11614583333333334" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/activity_parent_home.xml" value="0.2" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/fragment_child_History.xml" value="0.19927536231884058" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/fragment_child_history.xml" value="0.1598731884057971" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/fragment_child_reward.xml" value="0.19927536231884058" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/fragment_child_task.xml" value="0.19927536231884058" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/fragment_dashboard.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/fragment_family.xml" value="0.16621376811594202" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/fragment_home.xml" value="0.13020833333333334" />
@@ -26,7 +31,9 @@
         <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/fragment_parent_reward.xml" value="0.2056159420289855" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/fragment_parent_task.xml" value="0.2056159420289855" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/fragment_task.xml" value="0.21195652173913043" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/layout/item_row_parent_task.xml" value="0.4" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/menu/bottom_nav_menu.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/StarTask/app/src/main/res/menu/child_bottom_nav_menu.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

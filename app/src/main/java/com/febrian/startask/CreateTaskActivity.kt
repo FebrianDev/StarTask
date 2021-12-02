@@ -1,19 +1,21 @@
 package com.febrian.startask
 
 import android.R
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.febrian.startask.databinding.ActivityCreateTaskBinding
+import com.febrian.startask.ui.ParentTaskFragment
 import com.febrian.startask.utils.Constant
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import io.paperdb.Paper
 
 class CreateTaskActivity : AppCompatActivity() {
 
@@ -27,8 +29,6 @@ class CreateTaskActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val listRole = ArrayList<String>()
-        Paper.init(this)
-        //val familyId = Paper.book().read(Constant.FAMILY_ID, familyId)
         val familyId = intent.getStringExtra(Constant.FAMILY_ID).toString()
         val referenceGet =
             FirebaseDatabase.getInstance(Constant.URL).reference.child("Family").child("i6NaAzz")
@@ -80,6 +80,8 @@ class CreateTaskActivity : AppCompatActivity() {
                             .setValue(taskName)
                         snapshot.ref.child("task").child(taskName).child("amount")
                             .setValue(amount)
+                        //kembali ke parent home
+                        targetIntent()
                     }
 
                     override fun onCancelled(error: DatabaseError) {
@@ -90,4 +92,9 @@ class CreateTaskActivity : AppCompatActivity() {
             }
         }
     }
-}
+
+    private fun targetIntent() {
+        val mIntent = Intent(this, ParentHomeActivity::class.java)
+        startActivity(mIntent)
+        }
+    }
