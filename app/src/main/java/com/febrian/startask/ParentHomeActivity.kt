@@ -34,7 +34,9 @@ class ParentHomeActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_parent_reward, R.id.navigation_parent_home, R.id.navigation_parent_task
+                R.id.navigation_parent_reward,
+                R.id.navigation_parent_home,
+                R.id.navigation_parent_task
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -42,19 +44,13 @@ class ParentHomeActivity : AppCompatActivity() {
     }
 
     private fun saveData() {
-        val role = intent.getStringExtra(Constant.ROLE).toString()
-        val familyId = intent.getStringExtra(Constant.FAMILY_ID).toString()
-        val sharedPreferences: SharedPreferences = getSharedPreferences(Constant.SharedPreferences, Context.MODE_PRIVATE)
-        val editor: SharedPreferences.Editor? = sharedPreferences.edit()
-        editor?.apply {
-            putString(Constant.FAMILY_ID, familyId)
-            putString(Constant.ROLE, role)
+        val sharedPreferences: SharedPreferences =
+            getSharedPreferences(Constant.SharedPreferences, Context.MODE_PRIVATE)
+        val role = sharedPreferences.getString(Constant.ROLE, "")
+        val familyId = sharedPreferences.getString(Constant.FAMILY_ID, "")
 
-        }?.apply()
-
-        Toast.makeText(this,"tersimpan",Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "tersimpan", Toast.LENGTH_SHORT).show()
     }
-
 
 
 }

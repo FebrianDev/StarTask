@@ -1,6 +1,7 @@
 package com.febrian.startask.parent
 
 import android.R
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -9,7 +10,6 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.febrian.startask.ChildHomeActivity
-import com.febrian.startask.CreateTaskActivity
 import com.febrian.startask.ParentHomeActivity
 import com.febrian.startask.databinding.ActivityJoinFamilyBinding
 import com.febrian.startask.utils.Constant
@@ -58,21 +58,36 @@ class JoinFamilyActivity : AppCompatActivity() {
                             //if name exist
                             Toast.makeText(applicationContext, "Name exist", Toast.LENGTH_LONG)
                                 .show()
-                                if (role == Constant.MOTHER || role == Constant.FATHER ) {
-                                        targetIntent(ChildHomeActivity(), familyId, role)
-                                    }else{
-                                        targetIntent(ChildHomeActivity(), familyId, role)
-                                    }
+                            if (role == Constant.MOTHER || role == Constant.FATHER) {
+                                Toast.makeText(
+                                    applicationContext,
+                                    "Parent " + role,
+                                    Toast.LENGTH_LONG
+                                )
+                                    .show()
+                                targetIntent(ParentHomeActivity(), familyId, role)
+                            } else {
+                                Toast.makeText(
+                                    applicationContext,
+                                    "Child "
+                                            + role, Toast.LENGTH_LONG
+                                )
+                                    .show()
+                                targetIntent(ChildHomeActivity(), familyId, role)
+                            }
                         } else {
                             //if name not exist
                             Toast.makeText(applicationContext, "name not Exist!", Toast.LENGTH_LONG)
                                 .show()
-                            addRole(role, name, snapshot)
-                                if (role == Constant.MOTHER || role == Constant.FATHER ) {
-                                        targetIntent(ParentHomeActivity(), familyId, role)
-                                    }else{
-                                        targetIntent(ChildHomeActivity(), familyId, role)
-                                    }
+                            val check = addRole(role, name, snapshot)
+
+                            if (check) {
+                                if (role == Constant.MOTHER || role == Constant.FATHER) {
+                                    targetIntent(ParentHomeActivity(), familyId, role)
+                                } else {
+                                    targetIntent(ChildHomeActivity(), familyId, role)
+                                }
+                            }
                         }
                     } else {
                         Toast.makeText(applicationContext, "FamilyId is wrong!", Toast.LENGTH_LONG)
@@ -90,17 +105,25 @@ class JoinFamilyActivity : AppCompatActivity() {
 
     private fun targetIntent(activity: AppCompatActivity, id: String, role: String) {
         val intent = Intent(applicationContext, activity::class.java)
-        intent.putExtra(Constant.FAMILY_ID, id)
-        intent.putExtra(Constant.ROLE, role)
+        val shared = getSharedPreferences(Constant.SharedPreferences, Context.MODE_PRIVATE)
+        val editor = shared.edit()
+        editor.putString(Constant.FAMILY_ID, id)
+        editor.putString(Constant.ROLE, role)
+        editor.apply()
         startActivity(intent)
     }
 
-    private fun addRole(role: String, name: String, snapshot: DataSnapshot) {
+    private fun addRole(role: String, name: String, snapshot: DataSnapshot): Boolean {
         if (role == Constant.SON || role == Constant.DAUGHTER) {
             snapshot.ref.child("Child").child(name).child("name").setValue(name)
+            return true
         } else {
-            if (!snapshot.hasChild(role))
+            if (!snapshot.hasChild(role)) {
                 snapshot.ref.child(role).setValue(name)
+                return true
+            }
         }
+
+        return false
     }
 }

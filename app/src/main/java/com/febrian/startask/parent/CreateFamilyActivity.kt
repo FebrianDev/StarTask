@@ -1,5 +1,6 @@
 package com.febrian.startask.parent
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -63,10 +64,10 @@ class CreateFamilyActivity : AppCompatActivity() {
                         addRole(role, name, snapshot)
 
                         //goto parent home
-                        if (role == Constant.MOTHER || role == Constant.FATHER ) {
-                                targetIntent(ParentHomeActivity(), familyId, role)
-                            }else{
-                                targetIntent(ChildHomeActivity(), familyId, role)
+                        if (role == Constant.MOTHER || role == Constant.FATHER) {
+                            targetIntent(ParentHomeActivity(), familyId, role)
+                        } else {
+                            targetIntent(ChildHomeActivity(), familyId, role)
                         }
                     }
 
@@ -81,8 +82,11 @@ class CreateFamilyActivity : AppCompatActivity() {
 
     private fun targetIntent(activity: AppCompatActivity, id: String, role: String) {
         val intent = Intent(applicationContext, activity::class.java)
-        intent.putExtra(Constant.FAMILY_ID, id)
-        intent.putExtra(Constant.ROLE, role)
+        val shared = getSharedPreferences(Constant.SharedPreferences, Context.MODE_PRIVATE)
+        val editor = shared.edit()
+        editor.putString(Constant.FAMILY_ID, id)
+        editor.putString(Constant.ROLE, role)
+        editor.apply()
         startActivity(intent)
     }
 

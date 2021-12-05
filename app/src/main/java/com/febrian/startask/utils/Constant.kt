@@ -11,4 +11,5 @@ object Constant {
     const val MOTHER = "Mother"
     const val SON = "Son"
     const val DAUGHTER = "Daughter"
+
 }

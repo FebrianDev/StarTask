@@ -40,15 +40,9 @@ class ChildHomeActivity : AppCompatActivity() {
     }
 
     private fun saveData() {
-        val role = intent.getStringExtra(Constant.ROLE).toString()
-        val familyId = intent.getStringExtra(Constant.FAMILY_ID).toString()
         val sharedPreferences: SharedPreferences = getSharedPreferences(Constant.SharedPreferences, Context.MODE_PRIVATE)
-        val editor: SharedPreferences.Editor? = sharedPreferences.edit()
-        editor?.apply {
-            putString(Constant.FAMILY_ID, familyId)
-            putString(Constant.ROLE, role)
-
-        }?.apply()
+        val role = sharedPreferences.getString(Constant.ROLE, "")
+        val familyId = sharedPreferences.getString(Constant.FAMILY_ID, "")
 
         Toast.makeText(this,"tersimpan", Toast.LENGTH_SHORT).show()
     }
