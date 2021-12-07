@@ -12,4 +12,8 @@ object Constant {
     const val SON = "Son"
     const val DAUGHTER = "Daughter"
 
+    const val KEY_TASK = "KEY_TASK"
+
+    const val KEY_NAME = "KEY_NAME"
+
 }

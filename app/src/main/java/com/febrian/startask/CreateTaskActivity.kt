@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener
 class CreateTaskActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCreateTaskBinding
+
     //var familyId = ""
     var role = ""
 
@@ -29,9 +30,12 @@ class CreateTaskActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val listRole = ArrayList<String>()
-        val familyId = intent.getStringExtra(Constant.FAMILY_ID).toString()
+        val familyId = getSharedPreferences(
+            Constant.SharedPreferences,
+            MODE_PRIVATE
+        ).getString(Constant.FAMILY_ID, "").toString()
         val referenceGet =
-            FirebaseDatabase.getInstance(Constant.URL).reference.child("Family").child("i6NaAzz")
+            FirebaseDatabase.getInstance(Constant.URL).reference.child("Family").child(familyId)
         referenceGet.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 snapshot.child("Child").children.forEach {
@@ -96,5 +100,5 @@ class CreateTaskActivity : AppCompatActivity() {
     private fun targetIntent() {
         val mIntent = Intent(this, ParentHomeActivity::class.java)
         startActivity(mIntent)
-        }
     }
+}

@@ -1,6 +1,6 @@
 package com.febrian.startask.data
 
 data class Task (
-        var name : String? = "",
-        var amount : String? = ""
+        var name : String? = null,
+        var amount : String? = null
 )
