@@ -1,10 +1,9 @@
 package com.febrian.startask.ui.detail
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.febrian.startask.R
+import androidx.appcompat.app.AppCompatActivity
 import com.febrian.startask.databinding.ActivityDetailTaskBinding
 import com.febrian.startask.utils.Constant
 import com.google.firebase.database.DataSnapshot
@@ -52,21 +51,23 @@ class DetailTaskActivity : AppCompatActivity() {
             } else if (amount.isEmpty()) {
                 binding.amountStar.error = "Amount must be filled"
             } else {
-                reference.child(taskName).addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        snapshot.ref.child("name")
-                            .setValue(taskName)
-                        snapshot.ref.child("amount")
-                            .setValue(amount)
+                reference.child(taskName)
+                    .addListenerForSingleValueEvent(object : ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            snapshot.ref.child("name")
+                                .setValue(taskName)
+                            snapshot.ref.child("amount")
+                                .setValue(amount)
 
-                        onBackPressed()
-                    }
+                            onBackPressed()
+                        }
 
-                    override fun onCancelled(error: DatabaseError) {
-                        Toast.makeText(applicationContext, error.message, Toast.LENGTH_LONG).show()
-                    }
+                        override fun onCancelled(error: DatabaseError) {
+                            Toast.makeText(applicationContext, error.message, Toast.LENGTH_LONG)
+                                .show()
+                        }
 
-                })
+                    })
             }
         }
 

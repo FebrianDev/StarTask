@@ -1,4 +1,4 @@
-package com.febrian.startask
+package com.febrian.startask.ui.child
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.febrian.startask.R
 import com.febrian.startask.databinding.ActivityChildHomeBinding
 import com.febrian.startask.utils.Constant
 
@@ -32,7 +33,9 @@ class ChildHomeActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_child_reward, R.id.navigation_child_history, R.id.navigation_child_task
+                R.id.navigation_child_reward,
+                R.id.navigation_child_history,
+                R.id.navigation_child_task
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

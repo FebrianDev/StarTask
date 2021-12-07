@@ -22,21 +22,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ChildHomeActivity"
+            android:name=".ui.child.ChildHomeActivity"
             android:exported="false"
             android:label="@string/title_activity_child_home" />
         <activity
-            android:name=".ParentHomeActivity"
+            android:name=".ui.parent.ParentHomeActivity"
             android:exported="false"
             android:label="@string/title_activity_parent_home" />
         <activity
-            android:name=".CreateTaskActivity"
+            android:name=".ui.parent.task.CreateTaskActivity"
             android:exported="true" />
         <activity
-            android:name=".parent.JoinFamilyActivity"
+            android:name=".ui.auth.JoinFamilyActivity"
             android:exported="true" />
         <activity
-            android:name=".parent.CreateFamilyActivity"
+            android:name=".ui.auth.CreateFamilyActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

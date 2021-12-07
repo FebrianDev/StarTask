@@ -6,17 +6,17 @@
     app:startDestination="@+id/navigation_child_task">
     <fragment
         android:id="@+id/navigation_child_history"
-        android:name="com.febrian.startask.ui.ChildHistoryFragment"
+        android:name="com.febrian.startask.ui.child.ChildHistoryFragment"
         android:label="@string/title_history"
         tools:layout="@layout/fragment_child_history" />
     <fragment
         android:id="@+id/navigation_child_task"
-        android:name="com.febrian.startask.ui.ChildTaskFragment"
+        android:name="com.febrian.startask.ui.child.ChildTaskFragment"
         android:label="@string/add_task"
         tools:layout="@layout/fragment_child_task" />
     <fragment
         android:id="@+id/navigation_child_reward"
-        android:name="com.febrian.startask.ui.ChildRewardFragment"
+        android:name="com.febrian.startask.ui.child.ChildRewardFragment"
         android:label="@string/Rewad"
         tools:layout="@layout/fragment_child_reward" />
 </navigation>

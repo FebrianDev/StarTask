@@ -1,18 +1,16 @@
-package com.febrian.startask.ui
+package com.febrian.startask.ui.child
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.febrian.startask.CreateTaskActivity
-import com.febrian.startask.databinding.FragmentParentRewardBinding
+import com.febrian.startask.databinding.FragmentChildTaskBinding
 import com.febrian.startask.utils.Constant
 
-class ParentRewardFragment : Fragment() {
-    private var _binding: FragmentParentRewardBinding? = null
+class ChildTaskFragment : Fragment() {
+    private var _binding: FragmentChildTaskBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -23,7 +21,7 @@ class ParentRewardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentParentRewardBinding.inflate(inflater, container, false)
+        _binding = FragmentChildTaskBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val preferences = this.requireActivity().getSharedPreferences(Constant.SharedPreferences, Context.MODE_PRIVATE)
@@ -31,12 +29,6 @@ class ParentRewardFragment : Fragment() {
         val familyId: String? = preferences.getString(Constant.FAMILY_ID, null)
         binding.tvTaskFamilyId.text = familyId
         binding.tvTaskRole.text = role
-
-        binding.btnAddReward.setOnClickListener{
-            val mIntent = Intent(activity, CreateTaskActivity::class.java)
-            startActivity(mIntent)
-        }
-
         return root
     }
 
@@ -44,4 +36,6 @@ class ParentRewardFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }

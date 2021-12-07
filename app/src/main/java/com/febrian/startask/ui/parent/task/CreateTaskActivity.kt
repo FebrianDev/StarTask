@@ -1,16 +1,15 @@
-package com.febrian.startask
+package com.febrian.startask.ui.parent.task
 
 import android.R
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.febrian.startask.databinding.ActivityCreateTaskBinding
-import com.febrian.startask.ui.ParentTaskFragment
+import com.febrian.startask.ui.parent.ParentHomeActivity
 import com.febrian.startask.utils.Constant
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

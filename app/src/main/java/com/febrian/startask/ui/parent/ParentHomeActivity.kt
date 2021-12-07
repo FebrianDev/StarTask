@@ -1,9 +1,8 @@
-package com.febrian.startask
+package com.febrian.startask.ui.parent
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.provider.Settings.Global.putString
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +10,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.febrian.startask.R
 import com.febrian.startask.databinding.ActivityParentHomeBinding
 import com.febrian.startask.utils.Constant
 

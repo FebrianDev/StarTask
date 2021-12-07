@@ -1,4 +1,4 @@
-package com.febrian.startask.ui
+package com.febrian.startask.ui.parent.task
 
 import android.content.Context
 import android.content.Intent
@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.febrian.startask.CreateTaskActivity
 import com.febrian.startask.adapter.ParentTaskAdapter
 import com.febrian.startask.data.Child
 import com.febrian.startask.data.Task

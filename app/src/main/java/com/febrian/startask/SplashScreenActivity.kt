@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import com.febrian.startask.ui.child.ChildHomeActivity
+import com.febrian.startask.ui.parent.ParentHomeActivity
 import com.febrian.startask.utils.Constant
 
 class SplashScreenActivity : AppCompatActivity() {

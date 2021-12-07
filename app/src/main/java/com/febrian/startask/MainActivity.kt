@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.febrian.startask.databinding.ActivityMainBinding
-import com.febrian.startask.parent.CreateFamilyActivity
-import com.febrian.startask.parent.JoinFamilyActivity
+import com.febrian.startask.ui.auth.CreateFamilyActivity
+import com.febrian.startask.ui.auth.JoinFamilyActivity
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 

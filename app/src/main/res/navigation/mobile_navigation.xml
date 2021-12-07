@@ -6,17 +6,17 @@
     app:startDestination="@+id/navigation_parent_task">
     <fragment
         android:id="@+id/navigation_parent_home"
-        android:name="com.febrian.startask.ui.ParentHomeFragment"
+        android:name="com.febrian.startask.ui.parent.ParentHomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_parent_home" />
     <fragment
         android:id="@+id/navigation_parent_task"
-        android:name="com.febrian.startask.ui.ParentTaskFragment"
+        android:name="com.febrian.startask.ui.parent.task.ParentTaskFragment"
         android:label="@string/add_task"
         tools:layout="@layout/fragment_parent_task" />
     <fragment
         android:id="@+id/navigation_parent_reward"
-        android:name="com.febrian.startask.ui.ParentRewardFragment"
+        android:name="com.febrian.startask.ui.parent.reward.ParentRewardFragment"
         android:label="@string/Rewad"
         tools:layout="@layout/fragment_parent_reward" />
 </navigation>

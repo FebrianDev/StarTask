@@ -1,4 +1,4 @@
-package com.febrian.startask.parent
+package com.febrian.startask.ui.auth
 
 import android.R
 import android.content.Context
@@ -9,8 +9,8 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.febrian.startask.ChildHomeActivity
-import com.febrian.startask.ParentHomeActivity
+import com.febrian.startask.ui.child.ChildHomeActivity
+import com.febrian.startask.ui.parent.ParentHomeActivity
 import com.febrian.startask.databinding.ActivityJoinFamilyBinding
 import com.febrian.startask.utils.Constant
 import com.google.firebase.database.DataSnapshot
