@@ -58,8 +58,9 @@ class DetailTaskActivity : AppCompatActivity() {
                                 .setValue(taskName)
                             snapshot.ref.child("amount")
                                 .setValue(amount)
+                            snapshot.ref.child("isComplete").setValue(false)
 
-                            onBackPressed()
+                            finish()
                         }
 
                         override fun onCancelled(error: DatabaseError) {
@@ -73,7 +74,7 @@ class DetailTaskActivity : AppCompatActivity() {
 
         binding.delete.setOnClickListener {
             reference.child(task).removeValue()
-            onBackPressed()
+            finish()
         }
     }
 }

@@ -58,7 +58,7 @@ class DetailRewardActivity : AppCompatActivity() {
                             snapshot.ref.child("amount")
                                 .setValue(amount)
 
-                            onBackPressed()
+                            finish()
                         }
 
                         override fun onCancelled(error: DatabaseError) {
@@ -72,7 +72,7 @@ class DetailRewardActivity : AppCompatActivity() {
 
         binding.delete.setOnClickListener {
             reference.child(reward).removeValue()
-            onBackPressed()
+            finish()
         }
     }
 }

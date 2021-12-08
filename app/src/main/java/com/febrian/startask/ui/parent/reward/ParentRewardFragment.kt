@@ -36,20 +36,23 @@ class ParentRewardFragment : Fragment() {
         _binding = FragmentParentRewardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         getRewardData()
 
         binding.btnAddReward.setOnClickListener {
             val mIntent = Intent(activity, CreateRewardActivity::class.java)
             startActivity(mIntent)
         }
-
-        return root
     }
 
     private fun getRewardData() { //next merubah ke viewModel
         val preferences = this.requireActivity()
             .getSharedPreferences(Constant.SharedPreferences, Context.MODE_PRIVATE)
-        val role: String? = preferences.getString(Constant.ROLE, "")
         val familyId: String? = preferences.getString(Constant.FAMILY_ID, "")
 
         parentTaskRecyclerView = binding.rvShowAllReward
@@ -57,10 +60,11 @@ class ParentRewardFragment : Fragment() {
         parentTaskRecyclerView.setHasFixedSize(true)
 
         parentTaskArrayList = ArrayList()
+        parentTaskArrayList.clear()
 
         dbref = FirebaseDatabase.getInstance(Constant.URL).reference.child("Family")
             .child(familyId.toString()).child("Reward")
-        dbref.addListenerForSingleValueEvent(object : ValueEventListener {
+        dbref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
                 for (familySnapshot in snapshot.children) {
@@ -68,7 +72,9 @@ class ParentRewardFragment : Fragment() {
                     parentTaskArrayList.add(family)
                     Log.d("DATA", family.name.toString())
                 }
-                parentTaskRecyclerView.adapter = RewardAdapter(parentTaskArrayList)
+                val adapter = RewardAdapter(parentTaskArrayList)
+                adapter.notifyDataSetChanged()
+                parentTaskRecyclerView.adapter = adapter
 
             }
 
