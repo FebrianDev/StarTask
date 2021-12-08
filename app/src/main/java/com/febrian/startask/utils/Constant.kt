@@ -16,4 +16,6 @@ object Constant {
 
     const val KEY_NAME = "KEY_NAME"
 
+    const val KEY_REWARD = "KEY_REWARD"
+
 }

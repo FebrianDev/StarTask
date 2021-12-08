@@ -35,7 +35,7 @@ class ParentHomeActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_parent_reward,
-                R.id.navigation_parent_home,
+                R.id.navigation_parent_account,
                 R.id.navigation_parent_task
             )
         )

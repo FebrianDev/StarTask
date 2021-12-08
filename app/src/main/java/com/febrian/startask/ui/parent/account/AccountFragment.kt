@@ -1,13 +1,17 @@
 package com.febrian.startask.ui.parent.account
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.febrian.startask.MainActivity
 import com.febrian.startask.R
 import com.febrian.startask.databinding.FragmentAccountBinding
+import com.febrian.startask.ui.parent.task.CreateTaskActivity
 import com.febrian.startask.utils.Constant
 
 class AccountFragment : Fragment() {
@@ -24,6 +28,7 @@ class AccountFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("CommitPrefEdits")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -33,5 +38,12 @@ class AccountFragment : Fragment() {
 
         binding.tvTaskFamilyId.text = familyId
         binding.tvTaskRole.text = role
+
+        binding.logout.setOnClickListener {
+            preferences.edit().clear().apply()
+            val mIntent = Intent(activity, MainActivity::class.java)
+            startActivity(mIntent)
+            requireActivity().finish()
+        }
     }
 }

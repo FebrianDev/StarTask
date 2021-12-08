@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,7 +23,6 @@ class ParentTaskFragment : Fragment() {
     private lateinit var dbref: DatabaseReference
     private lateinit var parentTaskRecyclerView: RecyclerView
     private lateinit var parentTaskArrayList: ArrayList<Task>
-    private val listChild: ArrayList<Child> = ArrayList()
 
     private var _binding: FragmentParentTaskBinding? = null
 
@@ -67,13 +67,7 @@ class ParentTaskFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var name: String? = null;
                 for (familySnapshot in snapshot.children) {
-                    Log.d("Test", familySnapshot.children.toString())
-                    Log.d("Test", familyId.toString())
-                    Log.d("Test", familySnapshot.childrenCount.toString())
-                    Log.d("Test", snapshot.childrenCount.toString())
-                    Log.d("Test", snapshot.children.toString())
-
-                    val family = familySnapshot.getValue(Child::class.java)!!
+                                       val family = familySnapshot.getValue(Child::class.java)!!
                     for (taskFamily in familySnapshot.child("task").children) {
                         val all = taskFamily.getValue(Task::class.java)
                         parentTaskArrayList.add(all!!)
@@ -87,7 +81,7 @@ class ParentTaskFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+               Toast.makeText(requireContext(), error.message, Toast.LENGTH_LONG).show()
             }
 
         })

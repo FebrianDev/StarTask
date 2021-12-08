@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StarTask">
         <activity
+            android:name=".ui.detail.DetailRewardActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.parent.reward.CreateRewardActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.detail.DetailTaskActivity"
             android:exported="true" />
         <activity
@@ -40,7 +46,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 
