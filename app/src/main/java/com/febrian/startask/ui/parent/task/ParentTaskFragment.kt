@@ -62,7 +62,7 @@ class ParentTaskFragment : Fragment() {
 
         dbref = FirebaseDatabase.getInstance(Constant.URL).reference.child("Family")
             .child(familyId.toString()).child("Child")
-        dbref.addValueEventListener(object : ValueEventListener {
+        dbref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var name: String? = null;
                 for (familySnapshot in snapshot.children) {

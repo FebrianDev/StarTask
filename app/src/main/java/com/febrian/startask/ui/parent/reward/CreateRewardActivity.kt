@@ -18,7 +18,12 @@ class CreateRewardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityCreateRewardBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
+        val familyId = getSharedPreferences(
+            Constant.SharedPreferences,
+            MODE_PRIVATE
+        ).getString(Constant.FAMILY_ID, "").toString()
 
         binding.save.setOnClickListener {
             val taskName = binding.rewardName.text.toString()
@@ -31,7 +36,7 @@ class CreateRewardActivity : AppCompatActivity() {
             } else {
                 val referenceCreate =
                     FirebaseDatabase.getInstance(Constant.URL).reference.child("Family")
-                        .child("i6NaAzz").child("Reward").child(taskName)
+                        .child(familyId).child("Reward").child(taskName)
                 referenceCreate.addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         snapshot.ref.child("name")

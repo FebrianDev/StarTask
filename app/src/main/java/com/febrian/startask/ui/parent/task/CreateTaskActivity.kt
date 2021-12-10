@@ -76,7 +76,7 @@ class CreateTaskActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, role.toString(), Toast.LENGTH_LONG).show()
                 val referenceCreate =
                     FirebaseDatabase.getInstance(Constant.URL).reference.child("Family")
-                        .child("i6NaAzz").child("Child").child(role)
+                        .child(familyId).child("Child").child(role)
                 referenceCreate.addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         snapshot.ref.child("task").child(taskName).child("name")
@@ -99,7 +99,8 @@ class CreateTaskActivity : AppCompatActivity() {
     }
 
     private fun targetIntent() {
-        val mIntent = Intent(this, ParentHomeActivity::class.java)
-        startActivity(mIntent)
+        finish()
+//        val mIntent = Intent(this, ParentHomeActivity::class.java)
+//        startActivity(mIntent)
     }
 }
