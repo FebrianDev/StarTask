@@ -48,7 +48,7 @@ class ParentTaskFragment : Fragment() {
 
         return root
     }
-    
+
     private fun getParentTaskData() { //next merubah ke viewModel
         val preferences = this.requireActivity()
             .getSharedPreferences(Constant.SharedPreferences, Context.MODE_PRIVATE)

@@ -4,31 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.child.ChildRewardFragment">
-    <TextView
-        android:id="@+id/textView"
+    tools:context=".ui.child.ChildHomeActivity">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_show_all_reward"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="FamilyId:"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_task_familyId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="role:"
-        app:layout_constraintTop_toBottomOf="@+id/tv_task_familyId" />
-
-    <TextView
-        android:id="@+id/tv_task_role"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

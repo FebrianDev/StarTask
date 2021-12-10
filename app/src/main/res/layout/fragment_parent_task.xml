@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.parent.task.ParentTaskFragment">
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_show_all_task"
         android:layout_width="match_parent"

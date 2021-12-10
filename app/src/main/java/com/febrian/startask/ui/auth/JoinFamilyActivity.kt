@@ -65,7 +65,7 @@ class JoinFamilyActivity : AppCompatActivity() {
                                     Toast.LENGTH_LONG
                                 )
                                     .show()
-                                targetIntent(ParentHomeActivity(), familyId, role)
+                                targetIntent(ParentHomeActivity(), name, familyId, role)
                             } else {
                                 Toast.makeText(
                                     applicationContext,
@@ -73,7 +73,7 @@ class JoinFamilyActivity : AppCompatActivity() {
                                             + role, Toast.LENGTH_LONG
                                 )
                                     .show()
-                                targetIntent(ChildHomeActivity(), familyId, role)
+                                targetIntent(ChildHomeActivity(), name, familyId, role)
                             }
                         } else {
                             //if name not exist
@@ -83,9 +83,9 @@ class JoinFamilyActivity : AppCompatActivity() {
 
                             if (check) {
                                 if (role == Constant.MOTHER || role == Constant.FATHER) {
-                                    targetIntent(ParentHomeActivity(), familyId, role)
+                                    targetIntent(ParentHomeActivity(), name, familyId, role)
                                 } else {
-                                    targetIntent(ChildHomeActivity(), familyId, role)
+                                    targetIntent(ChildHomeActivity(), name, familyId, role)
                                 }
                             }
                         }
@@ -103,12 +103,13 @@ class JoinFamilyActivity : AppCompatActivity() {
         }
     }
 
-    private fun targetIntent(activity: AppCompatActivity, id: String, role: String) {
+    private fun targetIntent(activity: AppCompatActivity, name: String, id: String, role: String) {
         val intent = Intent(applicationContext, activity::class.java)
         val shared = getSharedPreferences(Constant.SharedPreferences, Context.MODE_PRIVATE)
         val editor = shared.edit()
         editor.putString(Constant.FAMILY_ID, id)
         editor.putString(Constant.ROLE, role)
+        editor.putString(Constant.KEY_NAME, name)
         editor.apply()
         startActivity(intent)
     }
