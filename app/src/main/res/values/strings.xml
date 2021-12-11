@@ -16,5 +16,7 @@
     <string name="Name_Task">Task</string>
     <string name="task_amount">Amount</string>
     <string name="Account">Account</string>
+    <string name="btn_add_Task">+</string>
+    <string name="LOGOUT">Logout</string>
 
 </resources>
