@@ -86,6 +86,12 @@ class ParentTaskFragment : Fragment() {
         })
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        getParentTaskData()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

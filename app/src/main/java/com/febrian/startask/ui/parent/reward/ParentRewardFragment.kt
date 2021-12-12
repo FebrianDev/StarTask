@@ -73,7 +73,6 @@ class ParentRewardFragment : Fragment() {
                     Log.d("DATA", family.name.toString())
                 }
                 val adapter = RewardAdapter(parentTaskArrayList)
-                adapter.notifyDataSetChanged()
                 parentTaskRecyclerView.adapter = adapter
 
             }
@@ -83,6 +82,12 @@ class ParentRewardFragment : Fragment() {
             }
 
         })
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        getRewardData()
     }
 
     override fun onDestroyView() {
