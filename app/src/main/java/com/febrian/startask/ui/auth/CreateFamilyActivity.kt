@@ -94,6 +94,7 @@ class CreateFamilyActivity : AppCompatActivity() {
     private fun addRole(role: String, name: String, snapshot: DataSnapshot) {
         if (role == Constant.SON || role == Constant.DAUGHTER) {
             snapshot.ref.child("Child").child(name).child("name").setValue(name)
+            snapshot.ref.child("Child").child(name).child("coin").setValue(0)
         } else {
             if (!snapshot.hasChild(role))
                 snapshot.ref.child(role).setValue(name)

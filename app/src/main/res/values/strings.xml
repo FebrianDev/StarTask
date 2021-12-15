@@ -7,10 +7,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_family">MyFamily</string>
-    <string name="add_task">ADD TASK</string>
+    <string name="add_task">Home</string>
     <string name="title_add_task">Task</string>
     <string name="Rewad">Reward</string>
-    <string name="add_reward">ADD REWARD</string>
+    <string name="add_reward">Reward</string>
     <string name="title_history">History</string>
     <string name="title_activity_child_home">Child Home</string>
     <string name="Name_Task">Task</string>
@@ -18,5 +18,8 @@
     <string name="Account">Account</string>
     <string name="btn_add_Task">+</string>
     <string name="LOGOUT">Logout</string>
+    <string name="action_filter">Filter</string>
+    <string name="filter_all">All</string>
+    <string name="filter_active">Active</string>
 
 </resources>

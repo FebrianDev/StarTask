@@ -5,16 +5,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.febrian.startask.data.Reward
+import com.febrian.startask.databinding.ItemRewardBinding
 import com.febrian.startask.databinding.ItemRowParentTaskBinding
 import com.febrian.startask.ui.detail.DetailRewardActivity
 import com.febrian.startask.utils.Constant
 
 class RewardAdapter(private val reward : ArrayList<Reward>) : RecyclerView.Adapter<RewardAdapter.ViewHolder>() {
 
-    inner class ViewHolder(private val binding : ItemRowParentTaskBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(private val binding : ItemRewardBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(r : Reward){
-            binding.tvItemTask.text = r.name
-            binding.tvItemAmount.text = r.amount
+            binding.itemTvTitle.text = r.name
+            binding.itemTvAmount.text = r.amount
 
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, DetailRewardActivity::class.java)
@@ -25,7 +26,7 @@ class RewardAdapter(private val reward : ArrayList<Reward>) : RecyclerView.Adapt
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RewardAdapter.ViewHolder {
-        val view = ItemRowParentTaskBinding.inflate(LayoutInflater.from(parent.context), parent,false)
+        val view = ItemRewardBinding.inflate(LayoutInflater.from(parent.context), parent,false)
         return ViewHolder(view)
     }
 

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StarTask">
         <activity
+            android:name=".ui.child.RewardActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.detail.DetailRewardActivity"
             android:exported="true" />
         <activity
@@ -48,8 +51,8 @@
             android:name=".MainActivity"
             android:exported="true" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

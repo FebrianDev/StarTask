@@ -2,6 +2,7 @@ package com.febrian.startask.ui.detail
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.febrian.startask.databinding.ActivityDetailTaskBinding
@@ -28,10 +29,15 @@ class DetailTaskActivity : AppCompatActivity() {
         val reference = FirebaseDatabase.getInstance(Constant.URL).reference.child("Family")
             .child(familyId.toString()).child("Child").child(name).child("task")
 
+        Log.d("Name",name)
+        Log.d("Name",task)
+
         reference.child(task).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 binding.taskName.setText(snapshot.child("name").value.toString())
                 binding.amountStar.setText(snapshot.child("amount").value.toString())
+
+                Log.d("Name",snapshot.child("name").value.toString())
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -58,7 +64,7 @@ class DetailTaskActivity : AppCompatActivity() {
                                 .setValue(taskName)
                             snapshot.ref.child("amount")
                                 .setValue(amount)
-                            snapshot.ref.child("isComplete").setValue(false)
+                            snapshot.ref.child("complete").setValue(false)
 
                             finish()
                         }

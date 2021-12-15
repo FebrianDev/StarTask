@@ -51,8 +51,6 @@ class ParentHomeActivity : AppCompatActivity() {
             getSharedPreferences(Constant.SharedPreferences, Context.MODE_PRIVATE)
         val role = sharedPreferences.getString(Constant.ROLE, "")
         val familyId = sharedPreferences.getString(Constant.FAMILY_ID, "")
-
-        Toast.makeText(this, "tersimpan", Toast.LENGTH_SHORT).show()
     }
 
 

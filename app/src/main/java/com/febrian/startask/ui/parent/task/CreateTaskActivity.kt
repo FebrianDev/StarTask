@@ -83,8 +83,8 @@ class CreateTaskActivity : AppCompatActivity() {
                             .setValue(taskName)
                         snapshot.ref.child("task").child(taskName).child("amount")
                             .setValue(amount)
-                        snapshot.ref.child("task").child(taskName).child("isComplete")
-                            .setValue(false)
+                        snapshot.ref.child("task").child(taskName).child("complete")
+                            .setValue("0")
                         //kembali ke parent home
                         targetIntent()
                     }

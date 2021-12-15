@@ -12,11 +12,6 @@
         android:layout_centerVertical="true"
         android:layout_toStartOf="@+id/layout_meta">
 
-        <CheckBox
-            android:id="@+id/item_checkbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
         <com.febrian.startask.utils.TaskTitleView
             android:id="@+id/item_tv_title"
             android:layout_width="match_parent"

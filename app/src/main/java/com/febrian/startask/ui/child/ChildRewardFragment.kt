@@ -1,23 +1,23 @@
 package com.febrian.startask.ui.child
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.febrian.startask.R
 import com.febrian.startask.data.Reward
 import com.febrian.startask.databinding.FragmentChildRewardBinding
-import com.febrian.startask.ui.parent.reward.RewardAdapter
 import com.febrian.startask.utils.Constant
 import com.google.firebase.database.*
 
 class ChildRewardFragment : Fragment() {
     private var _binding: FragmentChildRewardBinding? = null
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -26,6 +26,11 @@ class ChildRewardFragment : Fragment() {
     private lateinit var childTaskRecyclerView: RecyclerView
     private lateinit var childTaskArrayList: ArrayList<Reward>
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,9 +38,7 @@ class ChildRewardFragment : Fragment() {
     ): View {
 
         _binding = FragmentChildRewardBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,7 +51,7 @@ class ChildRewardFragment : Fragment() {
         val preferences = this.requireActivity()
             .getSharedPreferences(Constant.SharedPreferences, Context.MODE_PRIVATE)
         val familyId: String? = preferences.getString(Constant.FAMILY_ID, "")
-
+        val childName = preferences.getString(Constant.KEY_NAME, "").toString()
         childTaskRecyclerView = binding.rvShowAllReward
         childTaskRecyclerView.layoutManager = LinearLayoutManager(context)
         childTaskRecyclerView.setHasFixedSize(true)
@@ -57,16 +60,17 @@ class ChildRewardFragment : Fragment() {
         childTaskArrayList.clear()
 
         dbref = FirebaseDatabase.getInstance(Constant.URL).reference.child("Family")
-            .child(familyId.toString()).child("Reward")
+            .child(familyId.toString())
         dbref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-
-                for (familySnapshot in snapshot.children) {
+                binding.coin.text = "Coin " + snapshot.child("Child").child(childName)
+                    .child("coin").value.toString()
+                for (familySnapshot in snapshot.child("Reward").children) {
                     val family = familySnapshot.getValue(Reward::class.java)!!
                     childTaskArrayList.add(family)
                     Log.d("DATA", family.name.toString())
                 }
-                val adapter = RewardAdapter(childTaskArrayList)
+                val adapter = ChildRewardAdapter(childTaskArrayList)
                 childTaskRecyclerView.adapter = adapter
 
             }
@@ -76,6 +80,22 @@ class ChildRewardFragment : Fragment() {
             }
 
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.reward_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_reward -> {
+                val intent = Intent(requireActivity(), RewardActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onDestroyView() {
