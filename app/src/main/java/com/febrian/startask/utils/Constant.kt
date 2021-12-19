@@ -18,4 +18,10 @@ object Constant {
 
     const val KEY_REWARD = "KEY_REWARD"
 
+    const val KEY_NOTIFICATION = "KEY_NOTIFICATION"
+
+    const val CHANNEL_ID = "CHANNEL_ID"
+    const val CHANNEL_NAME = "CHANNEL_NAME"
+    const val NOTIFICATION_ID = 101
+
 }

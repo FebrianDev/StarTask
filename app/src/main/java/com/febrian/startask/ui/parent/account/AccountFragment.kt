@@ -14,18 +14,19 @@ import androidx.core.app.ShareCompat
 import androidx.fragment.app.Fragment
 import com.febrian.startask.MainActivity
 import com.febrian.startask.databinding.FragmentAccountBinding
+import com.febrian.startask.ui.child.ChildHomeActivity
 import com.febrian.startask.utils.Constant
+import com.febrian.startask.utils.Constant.KEY_NOTIFICATION
+import com.febrian.startask.utils.SendNotification
 
 class AccountFragment : Fragment() {
-
-
     private lateinit var binding: FragmentAccountBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
+
         binding = FragmentAccountBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -42,6 +43,17 @@ class AccountFragment : Fragment() {
         binding.tvTaskFamilyId.text = familyId
         binding.tvTaskName.text = name
         binding.tvTaskRole.text = role
+
+        val check = preferences.getBoolean(KEY_NOTIFICATION, false)
+        binding.notificationActive.isChecked = check
+        binding.notificationActive.setOnCheckedChangeListener { _, isChecked ->
+            preferences.edit().putBoolean(KEY_NOTIFICATION, isChecked).apply()
+        }
+
+        if(check) {
+            val sendNotification = SendNotification()
+            sendNotification.setRepeat(requireContext())
+        }
 
         binding.copy.setOnClickListener {
             val clipboardManager =

@@ -8,3 +8,12 @@ object CreateFamilyId {
             .joinToString("")
     }
 }
+
+object Rand {
+    fun get() : String {
+        val allowedChars = ('0'..'9')
+        return (1..3)
+            .map { allowedChars.random() }
+            .joinToString("")
+    }
+}

@@ -86,7 +86,7 @@ class ParentRewardFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-
+        parentTaskArrayList.clear()
         getRewardData()
     }
 

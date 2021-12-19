@@ -21,5 +21,9 @@
     <string name="action_filter">Filter</string>
     <string name="filter_all">All</string>
     <string name="filter_active">Active</string>
+    <string name="pref_notify_name">Notification</string>
+    <string name="pref_notify_summary">Daily reminder for nearest active task.</string>
+    <string name="pref_key_notify">key_notification</string>
+    <string name="notification">Notification</string>
 
 </resources>

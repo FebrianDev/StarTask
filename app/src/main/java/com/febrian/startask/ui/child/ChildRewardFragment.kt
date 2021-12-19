@@ -1,5 +1,6 @@
 package com.febrian.startask.ui.child
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -61,7 +62,8 @@ class ChildRewardFragment : Fragment() {
 
         dbref = FirebaseDatabase.getInstance(Constant.URL).reference.child("Family")
             .child(familyId.toString())
-        dbref.addValueEventListener(object : ValueEventListener {
+        dbref.addListenerForSingleValueEvent(object : ValueEventListener {
+            @SuppressLint("SetTextI18n")
             override fun onDataChange(snapshot: DataSnapshot) {
                 binding.coin.text = "Coin " + snapshot.child("Child").child(childName)
                     .child("coin").value.toString()
@@ -70,7 +72,8 @@ class ChildRewardFragment : Fragment() {
                     childTaskArrayList.add(family)
                     Log.d("DATA", family.name.toString())
                 }
-                val adapter = ChildRewardAdapter(childTaskArrayList)
+                val adapter = ChildRewardAdapter(childTaskArrayList, snapshot.child("Child").child(childName)
+                    .child("coin").value.toString().toInt(), familyId.toString(), childName)
                 childTaskRecyclerView.adapter = adapter
 
             }

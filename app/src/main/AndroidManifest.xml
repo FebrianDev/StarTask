@@ -50,9 +50,16 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" />
-    </application>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+        <receiver
+            android:name=".utils.SendNotification"
+            android:enabled="true"
+            android:exported="true" />
+    </application>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

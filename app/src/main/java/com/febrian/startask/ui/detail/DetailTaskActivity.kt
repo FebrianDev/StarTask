@@ -29,9 +29,6 @@ class DetailTaskActivity : AppCompatActivity() {
         val reference = FirebaseDatabase.getInstance(Constant.URL).reference.child("Family")
             .child(familyId.toString()).child("Child").child(name).child("task")
 
-        Log.d("Name",name)
-        Log.d("Name",task)
-
         reference.child(task).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 binding.taskName.setText(snapshot.child("name").value.toString())

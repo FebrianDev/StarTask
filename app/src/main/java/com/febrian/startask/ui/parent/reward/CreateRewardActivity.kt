@@ -44,7 +44,7 @@ class CreateRewardActivity : AppCompatActivity() {
                         snapshot.ref.child("amount")
                             .setValue(amount)
 
-                        onBackPressed()
+                        finish()
                     }
 
                     override fun onCancelled(error: DatabaseError) {
