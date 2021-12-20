@@ -6,26 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/dashboard"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/create"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create Family"
-        android:layout_marginTop="24dp"
+        android:layout_width="150dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="564dp"
+        android:background="@drawable/button"
+        android:text="@string/create_family"
+        android:textSize="12sp"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/join"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Join Family"
+        android:layout_width="150dp"
+        android:layout_height="49dp"
         android:layout_marginTop="24dp"
+        android:background="@drawable/button"
+        android:text="@string/join_family"
+        android:textSize="13sp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create"/>
-
+        app:layout_constraintTop_toBottomOf="@+id/create"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
