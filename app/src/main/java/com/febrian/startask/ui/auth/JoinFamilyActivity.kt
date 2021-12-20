@@ -13,6 +13,7 @@ import com.febrian.startask.ui.child.ChildHomeActivity
 import com.febrian.startask.ui.parent.ParentHomeActivity
 import com.febrian.startask.databinding.ActivityJoinFamilyBinding
 import com.febrian.startask.utils.Constant
+import com.febrian.startask.utils.Roles
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -27,23 +28,9 @@ class JoinFamilyActivity : AppCompatActivity() {
         binding = ActivityJoinFamilyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val roles = arrayListOf(Constant.FATHER, Constant.MOTHER, Constant.SON, Constant.DAUGHTER)
+        setupSimpleSpinner()
 
-        val adapter = ArrayAdapter(
-            this,
-            R.layout.simple_spinner_item, roles
-        )
-
-        binding.role.adapter = adapter
-
-        binding.role.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                role = roles[p2]
-            }
-
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-            }
-        }
+        setupCustomSpinner()
 
         binding.join.setOnClickListener {
             val familyId = binding.familyId.text.toString()
@@ -127,5 +114,34 @@ class JoinFamilyActivity : AppCompatActivity() {
         }
 
         return false
+    }
+
+    private fun setupCustomSpinner() {
+
+        val adapter = SpinnerArrayAdapter(this, Roles.list!!)
+        binding.role.adapter = adapter
+        // TODO Assignment: add listener to the customSpinner
+    }
+
+    private fun setupSimpleSpinner() {
+        val roles = arrayListOf(Constant.FATHER, Constant.MOTHER, Constant.SON, Constant.DAUGHTER)
+        val adapter = ArrayAdapter(
+            this,
+            R.layout.simple_spinner_item, roles
+        )
+
+        adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
+
+        binding.role.adapter = adapter
+
+        binding.role.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                role = roles[position]
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Use as per your wish
+            }
+        }
     }
 }

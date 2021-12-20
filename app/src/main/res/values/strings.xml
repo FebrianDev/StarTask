@@ -28,5 +28,12 @@
     <string name="STARTASK">STARTASK</string>
     <string name="create_family">Create Family</string>
     <string name="join_family">Join Family</string>
+    <string name="join">Join</string>
+    <string name="name">Name</string>
+    <string name="family_id">Family Id</string>
+    <string name="role">Choose your role</string>
+    <string name="joinFamily">Join Your Family</string>
+    <string name="createFamily">Create your family</string>
+    <string name="create">Create</string>
 
 </resources>
