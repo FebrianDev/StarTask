@@ -48,7 +48,7 @@ class RewardActivity : AppCompatActivity() {
 
         initAction(familyId)
         dbref = FirebaseDatabase.getInstance(Constant.URL).reference.child("Family")
-            .child(familyId.toString()).child("Child").child(childName).child("Reward")
+            .child(familyId).child("Child").child(childName).child("Reward")
 
         dbref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

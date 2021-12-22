@@ -1,5 +1,6 @@
 package com.febrian.startask.ui.child
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -8,14 +9,15 @@ import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.febrian.startask.R
 import com.febrian.startask.data.Task
 import com.febrian.startask.databinding.FragmentChildTaskBinding
-import com.febrian.startask.ui.parent.task.ParentTaskAdapter
 import com.febrian.startask.utils.Constant
+import com.febrian.startask.utils.Helper
 import com.google.firebase.database.*
 
 class ChildTaskFragment : Fragment() {
@@ -30,6 +32,10 @@ class ChildTaskFragment : Fragment() {
     private lateinit var familyId: String
     private lateinit var childName: String
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+    val helper = Helper()
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -37,6 +43,8 @@ class ChildTaskFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
         super.onCreate(savedInstanceState)
+
+        isLoading.observe(this, { helper.showLoading(it, binding.progressBar)})
     }
 
 
@@ -66,47 +74,16 @@ class ChildTaskFragment : Fragment() {
 
         dbref = FirebaseDatabase.getInstance(Constant.URL).reference.child("Family")
             .child(familyId.toString()).child("Child").child(childName)
-
-    }
-
-    private fun getChildTaskData() { //next merubah ke viewModel
-        val preferences = this.requireActivity()
-            .getSharedPreferences(Constant.SharedPreferences, Context.MODE_PRIVATE)
-        val familyId: String? = preferences.getString(Constant.FAMILY_ID, "")
-        val name = preferences.getString(Constant.KEY_NAME, "")
-
-        childTaskRecyclerView = binding.rvShowAllTask
-        childTaskRecyclerView.layoutManager = LinearLayoutManager(context)
-        childTaskRecyclerView.setHasFixedSize(true)
-
-        childTaskArrayList = ArrayList()
-
-        dbref = FirebaseDatabase.getInstance(Constant.URL).reference.child("Family")
-            .child(familyId.toString()).child("Child").child(name.toString())
-        dbref.addValueEventListener(object : ValueEventListener {
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (taskFamily in snapshot.child("task").children) {
-                    val all = taskFamily.getValue(Task::class.java)
-                    childTaskArrayList.add(all!!)
-                }
-
-                childTaskRecyclerView.adapter =
-                    ChildTaskAdapter(childTaskArrayList, familyId.toString(), childName)
-
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(requireContext(), error.message, Toast.LENGTH_LONG).show()
-            }
-
-        })
+        binding.tvTaskName.text = "Hi $childName,"
     }
 
     private fun showActive() {
+        _isLoading.value = true
         childTaskArrayList.clear()
         dbref.addListenerForSingleValueEvent(object : ValueEventListener {
+            @SuppressLint("SetTextI18n")
             override fun onDataChange(snapshot: DataSnapshot) {
+                _isLoading.value = false
                 binding.coin.text = "Coin " + snapshot.child("coin").value.toString()
                 for (taskFamily in snapshot.child("task").children) {
                     val all = taskFamily.getValue(Task::class.java)
@@ -122,6 +99,7 @@ class ChildTaskFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
+                _isLoading.value = false
                 Toast.makeText(requireContext(), error.message, Toast.LENGTH_LONG).show()
             }
 
@@ -129,9 +107,11 @@ class ChildTaskFragment : Fragment() {
     }
 
     private fun showComplete() {
+        _isLoading.value = true
         childTaskArrayList.clear()
         dbref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                _isLoading.value = false
                 binding.coin.text = "Coin " + snapshot.child("coin").value.toString()
                 for (taskFamily in snapshot.child("task").children) {
                     val all = taskFamily.getValue(Task::class.java)
@@ -148,6 +128,7 @@ class ChildTaskFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
+                //_isLoading.value = false
                 Toast.makeText(requireContext(), error.message, Toast.LENGTH_LONG).show()
             }
 
@@ -155,9 +136,11 @@ class ChildTaskFragment : Fragment() {
     }
 
     private fun showAll() {
+        _isLoading.value = true
         childTaskArrayList.clear()
         dbref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                _isLoading.value = false
                 binding.coin.text = "Coin " + snapshot.child("coin").value.toString()
                 for (taskFamily in snapshot.child("task").children) {
                     val all = taskFamily.getValue(Task::class.java)
@@ -171,6 +154,7 @@ class ChildTaskFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
+                _isLoading.value = false
                 Toast.makeText(requireContext(), error.message, Toast.LENGTH_LONG).show()
             }
 

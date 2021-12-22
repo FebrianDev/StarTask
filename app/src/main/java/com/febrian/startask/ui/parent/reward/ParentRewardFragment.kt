@@ -9,11 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.febrian.startask.data.Reward
 import com.febrian.startask.databinding.FragmentParentRewardBinding
 import com.febrian.startask.utils.Constant
+import com.febrian.startask.utils.Helper
 import com.google.firebase.database.*
 
 class ParentRewardFragment : Fragment() {
@@ -27,6 +30,17 @@ class ParentRewardFragment : Fragment() {
     private lateinit var parentTaskRecyclerView: RecyclerView
     private lateinit var parentTaskArrayList: ArrayList<Reward>
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    private val isLoading: LiveData<Boolean> = _isLoading
+    private val helper = Helper()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
+        super.onCreate(savedInstanceState)
+
+        isLoading.observe(this, { helper.showLoading(it, binding.progressBar)})
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,14 +48,12 @@ class ParentRewardFragment : Fragment() {
     ): View {
 
         _binding = FragmentParentRewardBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         getRewardData()
 
         binding.btnAddReward.setOnClickListener {
@@ -51,6 +63,7 @@ class ParentRewardFragment : Fragment() {
     }
 
     private fun getRewardData() { //next merubah ke viewModel
+        _isLoading.value = true
         val preferences = this.requireActivity()
             .getSharedPreferences(Constant.SharedPreferences, Context.MODE_PRIVATE)
         val familyId: String? = preferences.getString(Constant.FAMILY_ID, "")
@@ -66,7 +79,7 @@ class ParentRewardFragment : Fragment() {
             .child(familyId.toString()).child("Reward")
         dbref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-
+                _isLoading.value = false
                 for (familySnapshot in snapshot.children) {
                     val family = familySnapshot.getValue(Reward::class.java)!!
                     parentTaskArrayList.add(family)
@@ -78,6 +91,7 @@ class ParentRewardFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
+                _isLoading.value = false
                 Toast.makeText(requireContext(), error.message, Toast.LENGTH_LONG).show()
             }
 

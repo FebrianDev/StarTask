@@ -4,9 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.febrian.startask.databinding.ActivityMainBinding
 import com.febrian.startask.ui.auth.CreateFamilyActivity
 import com.febrian.startask.ui.auth.JoinFamilyActivity
+import com.febrian.startask.utils.Helper
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 

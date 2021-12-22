@@ -8,46 +8,46 @@
     tools:context=".MainActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/ic_launcher_background">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="371dp"
-        android:layout_height="378dp"
-        android:layout_marginTop="72dp"
-        android:src="@drawable/dashboard"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="287dp"
+            android:layout_height="339dp"
+            android:layout_marginTop="140dp"
+            android:src="@drawable/dashboard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/create"
-        android:layout_width="150dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="36dp"
-        android:background="@drawable/button"
-        android:text="@string/create_family"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        <Button
+            android:id="@+id/create"
+            android:layout_width="293dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="92dp"
+            android:background="@drawable/button_white"
+            android:shadowColor="@color/black"
+            android:text="@string/create_family"
+            android:textColor="@color/tealist_blue"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
-    <Button
-        android:id="@+id/join"
-        android:layout_width="150dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/button"
-        android:text="@string/join_family"
-        android:textColor="@color/white"
-        android:textSize="13sp"
-        app:layout_constraintEnd_toEndOf="@+id/create"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/create"
-        app:layout_constraintTop_toBottomOf="@+id/create" />
+        <Button
+            android:id="@+id/join"
+            android:layout_width="293dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/button"
+            android:text="@string/join_family"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="@+id/create"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/create"
+            app:layout_constraintTop_toBottomOf="@+id/create" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

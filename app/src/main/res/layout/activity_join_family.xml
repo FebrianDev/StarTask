@@ -27,43 +27,35 @@
         android:layout_marginTop="40dp"
         android:text="@string/joinFamily"
         android:textAlignment="center"
+        android:fontFamily="@font/open_sans_bold"
+        android:textColor="@color/tealist_blue"
         android:textSize="40dp"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/STARTASK"
-        android:textAlignment="center"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_layout_family_id"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="@string/family_id"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:startIconDrawable="@drawable/ic_baseline_vpn_key_24">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/family_id"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_layout_family_id"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="1" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_margin="16dp"
+            android:layout_marginTop="56dp"
+            android:hint="@string/family_id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            app:startIconDrawable="@drawable/ic_baseline_vpn_key_24">
 
-    <com.google.android.material.textfield.TextInputLayout
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/family_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_layout_name"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
@@ -104,8 +96,8 @@
 
     <Button
         android:id="@+id/join"
-        android:layout_width="150dp"
-        android:layout_height="49dp"
+        android:layout_width="293dp"
+        android:layout_height="43dp"
         android:layout_marginTop="92dp"
         android:background="@drawable/button"
         android:text="@string/join"

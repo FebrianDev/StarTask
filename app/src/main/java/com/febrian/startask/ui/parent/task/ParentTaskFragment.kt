@@ -9,6 +9,8 @@ import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +19,7 @@ import com.febrian.startask.data.Child
 import com.febrian.startask.data.Task
 import com.febrian.startask.databinding.FragmentParentTaskBinding
 import com.febrian.startask.utils.Constant
+import com.febrian.startask.utils.Helper
 import com.google.firebase.database.*
 
 class ParentTaskFragment : Fragment() {
@@ -32,6 +35,10 @@ class ParentTaskFragment : Fragment() {
     private lateinit var familyId: String
     private lateinit var childName: String
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+    val helper = Helper()
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -39,6 +46,8 @@ class ParentTaskFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
         super.onCreate(savedInstanceState)
+
+        isLoading.observe(this, { helper.showLoading(it, binding.progressBar)})
     }
 
     override fun onCreateView(
@@ -78,10 +87,12 @@ class ParentTaskFragment : Fragment() {
     }
 
     private fun showActive() {
+        _isLoading.value = true
         parentTaskArrayList.clear()
         listChildName.clear()
         dbref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                _isLoading.value = false
                 for (familySnapshot in snapshot.children) {
                     val family = familySnapshot.getValue(Child::class.java)!!
                     for (taskFamily in familySnapshot.child("task").children) {
@@ -102,6 +113,7 @@ class ParentTaskFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
+                _isLoading.value = true
                 Toast.makeText(requireContext(), error.message, Toast.LENGTH_LONG).show()
             }
 
@@ -109,10 +121,12 @@ class ParentTaskFragment : Fragment() {
     }
 
     private fun showComplete() {
+        _isLoading.value = true
         listChildName.clear()
         parentTaskArrayList.clear()
         dbref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                _isLoading.value = false
                 for (familySnapshot in snapshot.children) {
                     val family = familySnapshot.getValue(Child::class.java)!!
                     for (taskFamily in familySnapshot.child("task").children) {
@@ -134,6 +148,7 @@ class ParentTaskFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
+                _isLoading.value = false
                 Toast.makeText(requireContext(), error.message, Toast.LENGTH_LONG).show()
             }
 
@@ -141,6 +156,7 @@ class ParentTaskFragment : Fragment() {
     }
 
     private fun showAll() {
+        _isLoading.value = true
         listChildName.clear()
         parentTaskArrayList.clear()
         dbref.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -148,6 +164,7 @@ class ParentTaskFragment : Fragment() {
                 for (familySnapshot in snapshot.children) {
                     val family = familySnapshot.getValue(Child::class.java)!!
                     for (taskFamily in familySnapshot.child("task").children) {
+                        _isLoading.value = false
                         val all = taskFamily.getValue(Task::class.java)
                         parentTaskArrayList.add(all!!)
 
@@ -164,6 +181,7 @@ class ParentTaskFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
+                _isLoading.value = false
                 Toast.makeText(requireContext(), error.message, Toast.LENGTH_LONG).show()
             }
 

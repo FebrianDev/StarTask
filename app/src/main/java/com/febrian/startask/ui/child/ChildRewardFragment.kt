@@ -8,12 +8,15 @@ import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.febrian.startask.R
 import com.febrian.startask.data.Reward
 import com.febrian.startask.databinding.FragmentChildRewardBinding
 import com.febrian.startask.utils.Constant
+import com.febrian.startask.utils.Helper
 import com.google.firebase.database.*
 
 class ChildRewardFragment : Fragment() {
@@ -27,9 +30,16 @@ class ChildRewardFragment : Fragment() {
     private lateinit var childTaskRecyclerView: RecyclerView
     private lateinit var childTaskArrayList: ArrayList<Reward>
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+    val helper = Helper()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
         super.onCreate(savedInstanceState)
+
+        isLoading.observe(this, { helper.showLoading(it, binding.progressBar)})
+
     }
 
     override fun onCreateView(
@@ -49,6 +59,7 @@ class ChildRewardFragment : Fragment() {
     }
 
     private fun getRewardData() { //next merubah ke viewModel
+        _isLoading.value = true
         val preferences = this.requireActivity()
             .getSharedPreferences(Constant.SharedPreferences, Context.MODE_PRIVATE)
         val familyId: String? = preferences.getString(Constant.FAMILY_ID, "")
@@ -65,6 +76,7 @@ class ChildRewardFragment : Fragment() {
         dbref.addListenerForSingleValueEvent(object : ValueEventListener {
             @SuppressLint("SetTextI18n")
             override fun onDataChange(snapshot: DataSnapshot) {
+                _isLoading.value = false
                 binding.coin.text = "Coin " + snapshot.child("Child").child(childName)
                     .child("coin").value.toString()
                 for (familySnapshot in snapshot.child("Reward").children) {
@@ -79,6 +91,7 @@ class ChildRewardFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
+                _isLoading.value = false
                 Toast.makeText(requireContext(), error.message, Toast.LENGTH_LONG).show()
             }
 
