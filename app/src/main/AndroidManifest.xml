@@ -38,6 +38,7 @@
         <activity
             android:name=".ui.parent.ParentHomeActivity"
             android:exported="false"
+            android:theme="@style/FullScreen"
             android:label="@string/title_activity_parent_home" />
         <activity
             android:name=".ui.parent.task.CreateTaskActivity"

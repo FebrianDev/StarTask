@@ -6,6 +6,8 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
@@ -47,7 +49,6 @@ class ParentTaskFragment : Fragment() {
         setHasOptionsMenu(true)
         super.onCreate(savedInstanceState)
 
-        isLoading.observe(this, { helper.showLoading(it, binding.progressBar)})
     }
 
     override fun onCreateView(
@@ -83,7 +84,21 @@ class ParentTaskFragment : Fragment() {
             val mIntent = Intent(activity, CreateTaskActivity::class.java)
             startActivity(mIntent)
         }
+        getView()?.findViewById<Button>(R.id.action_filter)?.setOnClickListener { view ->
+            showSortingPopUpMenu(view)
+        }
+        getView()?.findViewById<TextView>(R.id.textBar)?.text = getString(R.string.title_home)
 
+        isLoading.observe(viewLifecycleOwner, { helper.showLoading(it, binding.progressBar)})
+    }
+
+    private fun showSortingPopUpMenu(view: View) {
+        activity?.let {
+            PopupMenu(it, view).run {
+                menuInflater.inflate(R.menu.filter_tasks, menu)
+                showFilteringPopUpMenu()
+            }
+        }
     }
 
     private fun showActive() {
@@ -161,10 +176,10 @@ class ParentTaskFragment : Fragment() {
         parentTaskArrayList.clear()
         dbref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                _isLoading.value = false
                 for (familySnapshot in snapshot.children) {
                     val family = familySnapshot.getValue(Child::class.java)!!
                     for (taskFamily in familySnapshot.child("task").children) {
-                        _isLoading.value = false
                         val all = taskFamily.getValue(Task::class.java)
                         parentTaskArrayList.add(all!!)
 
@@ -187,7 +202,7 @@ class ParentTaskFragment : Fragment() {
 
         })
     }
-
+    /*
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.main_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
@@ -202,7 +217,7 @@ class ParentTaskFragment : Fragment() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
+    */
     private fun showFilteringPopUpMenu() {
         val view = requireActivity().findViewById<View>(R.id.action_filter)
         PopupMenu(requireContext(), view).run {

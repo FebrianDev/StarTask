@@ -7,12 +7,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.febrian.startask.R
 import com.febrian.startask.data.Reward
 import com.febrian.startask.databinding.FragmentParentRewardBinding
 import com.febrian.startask.utils.Constant
@@ -37,8 +40,6 @@ class ParentRewardFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
         super.onCreate(savedInstanceState)
-
-        isLoading.observe(this, { helper.showLoading(it, binding.progressBar)})
     }
 
     override fun onCreateView(
@@ -60,6 +61,10 @@ class ParentRewardFragment : Fragment() {
             val mIntent = Intent(activity, CreateRewardActivity::class.java)
             startActivity(mIntent)
         }
+
+        isLoading.observe(viewLifecycleOwner, { helper.showLoading(it, binding.progressBar)})
+
+        getView()?.findViewById<TextView>(R.id.textBar)?.text = getString(R.string.Rewad)
     }
 
     private fun getRewardData() { //next merubah ke viewModel
