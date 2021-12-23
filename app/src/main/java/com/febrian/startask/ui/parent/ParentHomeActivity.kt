@@ -29,8 +29,6 @@ class ParentHomeActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = binding.navView
 
-        this.supportActionBar?.setDisplayHomeAsUpEnabled(true);
-
         val navController = findNavController(R.id.nav_host_fragment_activity_parent_home)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.

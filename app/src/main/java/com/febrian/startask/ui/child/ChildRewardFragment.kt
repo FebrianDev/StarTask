@@ -6,6 +6,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
@@ -38,8 +40,6 @@ class ChildRewardFragment : Fragment() {
         setHasOptionsMenu(true)
         super.onCreate(savedInstanceState)
 
-        isLoading.observe(this, { helper.showLoading(it, binding.progressBar)})
-
     }
 
     override fun onCreateView(
@@ -54,6 +54,14 @@ class ChildRewardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        getView()?.findViewById<Button>(R.id.action_reward)?.setOnClickListener {
+            val intent = Intent(requireActivity(), RewardActivity::class.java)
+            startActivity(intent)
+        }
+        getView()?.findViewById<TextView>(R.id.textBar)?.text = getString(R.string.Rewad)
+
+        isLoading.observe(viewLifecycleOwner, { helper.showLoading(it, binding.progressBar)})
 
         getRewardData()
     }
@@ -96,22 +104,6 @@ class ChildRewardFragment : Fragment() {
             }
 
         })
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.reward_menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_reward -> {
-                val intent = Intent(requireActivity(), RewardActivity::class.java)
-                startActivity(intent)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
     override fun onDestroyView() {

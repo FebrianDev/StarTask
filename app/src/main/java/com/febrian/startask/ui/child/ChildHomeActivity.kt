@@ -32,7 +32,7 @@ class ChildHomeActivity : AppCompatActivity() {
                 R.id.navigation_child_account
             )
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        //setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
 

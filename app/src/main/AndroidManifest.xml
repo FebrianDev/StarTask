@@ -23,7 +23,7 @@
             android:exported="true" />
         <activity
             android:name=".SplashScreenActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:theme="@style/FullScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,12 +32,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:theme="@style/FullScreen"
             android:name=".ui.child.ChildHomeActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/title_activity_child_home" />
         <activity
             android:name=".ui.parent.ParentHomeActivity"
-            android:exported="false"
+            android:exported="true"
             android:theme="@style/FullScreen"
             android:label="@string/title_activity_parent_home" />
         <activity
@@ -51,7 +52,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:theme="@style/FullScreen"
             android:exported="true" />
 
         <receiver

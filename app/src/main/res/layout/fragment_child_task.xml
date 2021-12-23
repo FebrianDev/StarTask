@@ -7,6 +7,24 @@
     android:background="@color/white_deep"
     tools:context=".ui.child.ChildTaskFragment">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/custom_action_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
     <ImageView
         android:id="@+id/textView5"
         android:layout_width="410dp"
@@ -16,9 +34,9 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/card"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="@id/app_bar_home"
+        app:layout_constraintTop_toBottomOf="@+id/app_bar_home" />
 
     <TextView
         android:id="@+id/tv_task_name"
@@ -55,7 +73,7 @@
         android:id="@+id/coin"
         android:layout_width="99dp"
         android:layout_height="36dp"
-        android:fontFamily="@font/open_sans_bold"
+        android:fontFamily="@font/alte"
         android:textAlignment="center"
         android:textColor="@color/ic_launcher_background"
         android:textSize="20sp"
@@ -76,13 +94,17 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_show_all_task"
-        android:layout_width="410dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="168dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"

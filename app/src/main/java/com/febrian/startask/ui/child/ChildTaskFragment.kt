@@ -6,6 +6,8 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
@@ -43,8 +45,6 @@ class ChildTaskFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
         super.onCreate(savedInstanceState)
-
-        isLoading.observe(this, { helper.showLoading(it, binding.progressBar)})
     }
 
 
@@ -75,6 +75,22 @@ class ChildTaskFragment : Fragment() {
         dbref = FirebaseDatabase.getInstance(Constant.URL).reference.child("Family")
             .child(familyId.toString()).child("Child").child(childName)
         binding.tvTaskName.text = "Hi $childName,"
+
+        getView()?.findViewById<Button>(R.id.action_filter)?.setOnClickListener { view ->
+            showSortingPopUpMenu(view)
+        }
+        getView()?.findViewById<TextView>(R.id.textBar)?.text = getString(R.string.title_add_task)
+
+        isLoading.observe(viewLifecycleOwner, { helper.showLoading(it, binding.progressBar)})
+    }
+
+    private fun showSortingPopUpMenu(view: View) {
+        activity?.let {
+            PopupMenu(it, view).run {
+                menuInflater.inflate(R.menu.filter_tasks, menu)
+                showFilteringPopUpMenu()
+            }
+        }
     }
 
     private fun showActive() {
@@ -161,6 +177,8 @@ class ChildTaskFragment : Fragment() {
         })
     }
 
+    /*
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.main_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
@@ -175,6 +193,8 @@ class ChildTaskFragment : Fragment() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+     */
 
     private fun showFilteringPopUpMenu() {
         val view = requireActivity().findViewById<View>(R.id.action_filter)

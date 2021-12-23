@@ -9,17 +9,41 @@
         android:id="@+id/navigation_child_task"
         android:name="com.febrian.startask.ui.child.ChildTaskFragment"
         android:label="@string/add_task"
-        tools:layout="@layout/fragment_child_task" />
+        tools:layout="@layout/fragment_child_task" >
+        <action
+            android:id="@+id/action_navigation_child_task_to_navigation_child_reward"
+            app:destination="@id/navigation_child_reward" />
+        <action
+            android:id="@+id/action_navigation_child_task_to_navigation_child_account"
+            app:destination="@id/navigation_child_account" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_child_reward"
         android:name="com.febrian.startask.ui.child.ChildRewardFragment"
         android:label="@string/Rewad"
-        tools:layout="@layout/fragment_child_reward" />
+        tools:layout="@layout/fragment_child_reward" >
+        <action
+            android:id="@+id/action_navigation_child_reward_to_navigation_child_account"
+            app:destination="@id/navigation_child_account" />
+        <action
+            android:id="@+id/action_navigation_child_reward_to_navigation_child_account2"
+            app:destination="@id/navigation_child_account" />
+        <action
+            android:id="@+id/action_navigation_child_reward_to_navigation_child_task"
+            app:destination="@id/navigation_child_task" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_child_account"
         android:name="com.febrian.startask.ui.parent.account.AccountFragment"
         android:label="Account"
-        tools:layout="@layout/fragment_account" />
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_navigation_child_account_to_navigation_child_reward"
+            app:destination="@id/navigation_child_reward" />
+        <action
+            android:id="@+id/action_navigation_child_account_to_navigation_child_task"
+            app:destination="@id/navigation_child_task" />
+    </fragment>
 </navigation>

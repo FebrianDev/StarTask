@@ -9,10 +9,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ShareCompat
 import androidx.fragment.app.Fragment
 import com.febrian.startask.MainActivity
+import com.febrian.startask.R
 import com.febrian.startask.databinding.FragmentAccountBinding
 import com.febrian.startask.ui.child.ChildHomeActivity
 import com.febrian.startask.utils.Constant
@@ -80,5 +82,7 @@ class AccountFragment : Fragment() {
             startActivity(mIntent)
             requireActivity().finish()
         }
+
+        getView()?.findViewById<TextView>(R.id.textBar)?.text = getString(R.string.Account)
     }
 }
