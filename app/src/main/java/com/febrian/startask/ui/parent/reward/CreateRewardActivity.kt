@@ -17,6 +17,9 @@ class CreateRewardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.title = "Create Reward"
+
         binding = ActivityCreateRewardBinding.inflate(layoutInflater)
 
         setContentView(binding.root)

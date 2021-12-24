@@ -8,27 +8,15 @@
         android:id="@+id/navigation_parent_task"
         android:name="com.febrian.startask.ui.parent.task.ParentTaskFragment"
         android:label="@string/add_task"
-        tools:layout="@layout/fragment_parent_task" >
-        <action
-            android:id="@+id/action_navigation_parent_task_to_navigation_parent_reward"
-            app:destination="@id/navigation_parent_reward" />
-    </fragment>
+        tools:layout="@layout/fragment_parent_task" />
     <fragment
         android:id="@+id/navigation_parent_reward"
         android:name="com.febrian.startask.ui.parent.reward.ParentRewardFragment"
         android:label="@string/Rewad"
-        tools:layout="@layout/fragment_parent_reward" >
-        <action
-            android:id="@+id/action_navigation_parent_reward_to_navigation_parent_account"
-            app:destination="@id/navigation_parent_account" />
-    </fragment>
+        tools:layout="@layout/fragment_parent_reward" />
     <fragment
         android:id="@+id/navigation_parent_account"
         android:name="com.febrian.startask.ui.parent.account.AccountFragment"
         android:label="fragment_account"
-        tools:layout="@layout/fragment_account" >
-        <action
-            android:id="@+id/action_navigation_parent_account_to_navigation_parent_task"
-            app:destination="@id/navigation_parent_task" />
-    </fragment>
+        tools:layout="@layout/fragment_account" />
 </navigation>

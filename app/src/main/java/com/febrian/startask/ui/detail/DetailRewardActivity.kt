@@ -27,6 +27,9 @@ class DetailRewardActivity : AppCompatActivity() {
         val reference = FirebaseDatabase.getInstance(Constant.URL).reference.child("Family")
             .child(familyId.toString()).child("Reward")
 
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.title = "Edit Reward"
+
         reference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 binding.taskName.setText(snapshot.child(reward).child("name").value.toString())

@@ -21,6 +21,7 @@ import com.febrian.startask.databinding.FragmentParentRewardBinding
 import com.febrian.startask.utils.Constant
 import com.febrian.startask.utils.Helper
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.fragment_child_task.*
 
 class ParentRewardFragment : Fragment() {
     private var _binding: FragmentParentRewardBinding? = null
@@ -55,7 +56,6 @@ class ParentRewardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        getRewardData()
 
         binding.btnAddReward.setOnClickListener {
             val mIntent = Intent(activity, CreateRewardActivity::class.java)
@@ -65,6 +65,14 @@ class ParentRewardFragment : Fragment() {
         isLoading.observe(viewLifecycleOwner, { helper.showLoading(it, binding.progressBar)})
 
         getView()?.findViewById<TextView>(R.id.textBar)?.text = getString(R.string.Rewad)
+
+        swipeToRefresh.setOnRefreshListener {
+            getRewardData()
+            parentTaskRecyclerView.adapter
+            swipeToRefresh.isRefreshing = false
+        }
+
+        getRewardData()
     }
 
     private fun getRewardData() { //next merubah ke viewModel

@@ -20,9 +20,11 @@ import com.febrian.startask.R
 import com.febrian.startask.data.Child
 import com.febrian.startask.data.Task
 import com.febrian.startask.databinding.FragmentParentTaskBinding
+import com.febrian.startask.ui.child.ChildTaskAdapter
 import com.febrian.startask.utils.Constant
 import com.febrian.startask.utils.Helper
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.fragment_child_task.*
 
 class ParentTaskFragment : Fragment() {
 
@@ -90,6 +92,12 @@ class ParentTaskFragment : Fragment() {
         getView()?.findViewById<TextView>(R.id.textBar)?.text = getString(R.string.title_home)
 
         isLoading.observe(viewLifecycleOwner, { helper.showLoading(it, binding.progressBar)})
+
+        swipeToRefresh.setOnRefreshListener {
+            showAll()
+            parentTaskRecyclerView.adapter = ParentTaskAdapter(parentTaskArrayList, listChildName)
+            swipeToRefresh.isRefreshing = false
+        }
     }
 
     private fun showSortingPopUpMenu(view: View) {
