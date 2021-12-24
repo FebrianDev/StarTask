@@ -11,7 +11,7 @@ Memberikan motivasi kepada anak sangatlah sulit bagi orang tua yang memiliki kes
 Atas dasar permasalahan di atas, kelompok kami menemukan metode yang dapat membantu orangtua untuk memberikan motivasi kepada anak dengan cara memberikan Tugas berupa pekerjaan rumah dan memberikan hadiah atas pekerjaan yang telah diselesaikan sehingga anak dapat termotivasi dengan tugas yang diberikan oleh orang tua.
 
 ## Screenshoot
-<img src="https://github.com/FebrianDev/StarTask/blob/master/image.jpg" width=600 height=400/>
+<img src="https://github.com/FebrianDev/StarTask/blob/master/image.jpg"/>
 
 ## External Library
 <ul>
