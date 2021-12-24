@@ -13,8 +13,23 @@ Atas dasar permasalahan di atas, kelompok kami menemukan metode yang dapat memba
 ## Screenshoot
 <img src="https://github.com/FebrianDev/StarTask/blob/master/image.jpg"/>
 
+## Github Repo Link: 
+https://github.com/FebrianDev/StarTask
+
+## Deployed Link
+https://drive.google.com/file/d/1LTWbiNLcV4IykRLcE1jmJcKsL1oiP2Ii/view?usp=sharing
+
+## 10-Min Video Presentation Link: 
+https://drive.google.com/file/d/1jPIJNhSj2irOMeMdSOLZCTI8_FmL0yUj/view?usp=sharing
+
+## Slide Presentation Link: 
+https://www.canva.com/design/DAEzbMv9RQA/hVWyJ-rK_GdmeA7tfsbrDA/view?utm_content=DAEzbMv9RQA&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
+
 ## External Library
 <ul>
   <li>Firebase Auth</li>
   <li>Firebase Realtime Database</li>
   </ul>
+
+## Demo Video Link
+https://drive.google.com/file/d/1KG5tiUpadqrbmvXLCmwlNLu-eEEXN4c6/view?usp=sharing
