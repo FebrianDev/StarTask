@@ -9,3 +9,12 @@ Memberikan motivasi kepada anak sangatlah sulit bagi orang tua yang memiliki kes
 2. Apakah penting peran orang tua penting untuk memberikan motivasi terhadap anak?
 
 Atas dasar permasalahan di atas, kelompok kami menemukan metode yang dapat membantu orangtua untuk memberikan motivasi kepada anak dengan cara memberikan Tugas berupa pekerjaan rumah dan memberikan hadiah atas pekerjaan yang telah diselesaikan sehingga anak dapat termotivasi dengan tugas yang diberikan oleh orang tua.
+
+## Screenshoot
+<img src="https://github.com/FebrianDev/StarTask/blob/master/image.jpg" width=600 height=400/>
+
+## External Library
+<ul>
+  <li>Firebase Auth</li>
+  <li>Firebase Realtime Database</li>
+  </ul>
