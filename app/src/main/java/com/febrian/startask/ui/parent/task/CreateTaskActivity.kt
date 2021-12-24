@@ -28,6 +28,9 @@ class CreateTaskActivity : AppCompatActivity() {
         binding = ActivityCreateTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.title = "Create Task"
+
         val listRole = ArrayList<String>()
         val familyId = getSharedPreferences(
             Constant.SharedPreferences,

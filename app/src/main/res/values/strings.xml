@@ -32,8 +32,12 @@
     <string name="name">Name</string>
     <string name="family_id">Family Id</string>
     <string name="role">Choose your role</string>
-    <string name="joinFamily">Join Your Family</string>
-    <string name="createFamily">Create your family</string>
+    <string name="joinFamily">Join Family</string>
+    <string name="createFamily">Create Family</string>
     <string name="create">Create</string>
+    <string name="chose">Choose Child</string>
+    <string name="createTask">Create Task</string>
+    <string name="rewardname">Reward Name</string>
+    <string name="createReward">Create Reward</string>
 
 </resources>

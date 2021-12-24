@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white_deep"
     tools:context=".ui.parent.account.AccountFragment">
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar_home"
@@ -23,16 +22,30 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_item_avatar"
+        android:layout_width="137dp"
+        android:layout_height="136dp"
+        android:layout_marginStart="126dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="126dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_bar_home"
+        tools:src="@tools:sample/avatars" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="16dp"
         android:text="FamilyId : "
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/app_bar_home" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_task_name"
+        tools:layout_editor_absoluteX="24dp" />
 
     <TextView
         android:id="@+id/tv_task_familyId"
@@ -45,14 +58,14 @@
         />
 
     <ImageButton
-    android:id="@+id/copy"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+        android:id="@+id/copy"
+        android:layout_width="27dp"
+        android:layout_height="24dp"
         android:layout_marginEnd="8dp"
-    android:background="@drawable/ic_baseline_content_copy_24"
-    app:layout_constraintEnd_toStartOf="@+id/share"
-    app:layout_constraintTop_toTopOf="@+id/tv_task_familyId"
-    app:layout_constraintBottom_toBottomOf="@+id/tv_task_familyId"/>
+        android:background="@drawable/ic_baseline_content_copy_24"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_task_familyId"
+        app:layout_constraintEnd_toStartOf="@+id/share"
+        app:layout_constraintTop_toTopOf="@+id/tv_task_familyId" />
 
     <ImageButton
         android:id="@+id/share"
@@ -65,36 +78,28 @@
         app:layout_constraintBottom_toBottomOf="@+id/copy"/>
 
     <TextView
-    android:id="@+id/textView2"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Name : "
-    android:textSize="20sp"
-    android:layout_marginTop="8dp"
-    android:textColor="@color/black"
-    android:textStyle="bold"
-    android:layout_marginHorizontal="24dp"
-    app:layout_constraintTop_toBottomOf="@+id/tv_task_familyId" />
-
-    <TextView
         android:id="@+id/tv_task_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        android:textSize="30sp"
+        android:text="@string/name"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/img_item_avatar"
+        tools:layout_editor_absoluteX="24dp" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Role : "
-        android:textSize="20sp"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
         android:layout_marginHorizontal="24dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_task_name" />
+        android:text="Role : "
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/tv_task_familyId"
+        tools:layout_editor_absoluteX="32dp" />
 
     <TextView
         android:id="@+id/tv_task_role"
@@ -128,14 +133,17 @@
 
     <Button
         android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="259dp"
+        android:layout_height="45dp"
         android:background="@drawable/button"
+        android:backgroundTint="@color/biru"
+        android:textColor="@color/white"
+        android:fontFamily="@font/alte"
         android:text="@string/LOGOUT"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.882"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/notification"
+        app:layout_constraintVertical_bias="0.16" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

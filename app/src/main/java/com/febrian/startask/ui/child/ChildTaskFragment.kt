@@ -15,12 +15,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.febrian.startask.R
 import com.febrian.startask.data.Task
 import com.febrian.startask.databinding.FragmentChildTaskBinding
 import com.febrian.startask.utils.Constant
 import com.febrian.startask.utils.Helper
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.fragment_child_task.*
 
 class ChildTaskFragment : Fragment() {
 
@@ -82,6 +84,13 @@ class ChildTaskFragment : Fragment() {
         getView()?.findViewById<TextView>(R.id.textBar)?.text = getString(R.string.title_add_task)
 
         isLoading.observe(viewLifecycleOwner, { helper.showLoading(it, binding.progressBar)})
+
+        swipeToRefresh.setOnRefreshListener {
+            showAll()
+            childTaskRecyclerView.adapter =
+                ChildTaskAdapter(childTaskArrayList, familyId.toString(), childName)
+            swipeToRefresh.isRefreshing = false
+        }
     }
 
     private fun showSortingPopUpMenu(view: View) {

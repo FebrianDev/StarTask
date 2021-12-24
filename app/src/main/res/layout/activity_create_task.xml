@@ -6,16 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".ui.parent.task.CreateTaskActivity">
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/alte"
+        android:text="@string/createTask"
+        android:textAlignment="center"
+        android:textColor="@color/tealist_blue"
+        android:textSize="40dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_layout_task_name"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:hint="Task Name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:hint="Task Name">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/task_name"
@@ -26,7 +38,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_layout_amount_star"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -43,14 +55,25 @@
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="@string/chose"
+        android:textAlignment="center"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/role"
+        app:layout_constraintEnd_toStartOf="@+id/role"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/role" />
+
     <Spinner
         android:id="@+id/role"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/text_layout_amount_star"/>
+        android:layout_width="210dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_layout_amount_star" />
 
     <Button
         android:id="@+id/save"

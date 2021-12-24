@@ -20,6 +20,7 @@ import com.febrian.startask.databinding.FragmentChildRewardBinding
 import com.febrian.startask.utils.Constant
 import com.febrian.startask.utils.Helper
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.fragment_child_task.*
 
 class ChildRewardFragment : Fragment() {
     private var _binding: FragmentChildRewardBinding? = null
@@ -64,6 +65,12 @@ class ChildRewardFragment : Fragment() {
         isLoading.observe(viewLifecycleOwner, { helper.showLoading(it, binding.progressBar)})
 
         getRewardData()
+
+        swipeToRefresh.setOnRefreshListener {
+            getRewardData()
+            childTaskRecyclerView.adapter
+            swipeToRefresh.isRefreshing = false
+        }
     }
 
     private fun getRewardData() { //next merubah ke viewModel

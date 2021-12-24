@@ -19,7 +19,9 @@ import com.febrian.startask.databinding.FragmentAccountBinding
 import com.febrian.startask.ui.child.ChildHomeActivity
 import com.febrian.startask.utils.Constant
 import com.febrian.startask.utils.Constant.KEY_NOTIFICATION
+import com.febrian.startask.utils.Role
 import com.febrian.startask.utils.SendNotification
+import kotlinx.android.synthetic.main.fragment_account.*
 
 class AccountFragment : Fragment() {
     private lateinit var binding: FragmentAccountBinding
@@ -45,6 +47,16 @@ class AccountFragment : Fragment() {
         binding.tvTaskFamilyId.text = familyId
         binding.tvTaskName.text = name
         binding.tvTaskRole.text = role
+
+        if(role == Constant.FATHER){
+            img_item_avatar.setImageResource(R.drawable.father)
+        }else if(role == Constant.MOTHER){
+            img_item_avatar.setImageResource(R.drawable.mother)
+        }else if(role == Constant.SON){
+            img_item_avatar.setImageResource(R.drawable.son)
+        }else if(role == Constant.DAUGHTER){
+            img_item_avatar.setImageResource(R.drawable.daughter)
+        }
 
         val check = preferences.getBoolean(KEY_NOTIFICATION, false)
         binding.notificationActive.isChecked = check

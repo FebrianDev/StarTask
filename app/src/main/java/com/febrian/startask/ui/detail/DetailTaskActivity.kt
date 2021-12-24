@@ -29,6 +29,9 @@ class DetailTaskActivity : AppCompatActivity() {
         val reference = FirebaseDatabase.getInstance(Constant.URL).reference.child("Family")
             .child(familyId.toString()).child("Child").child(name).child("task")
 
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.title = "Edit Task"
+
         reference.child(task).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 binding.taskName.setText(snapshot.child("name").value.toString())
@@ -61,7 +64,7 @@ class DetailTaskActivity : AppCompatActivity() {
                                 .setValue(taskName)
                             snapshot.ref.child("amount")
                                 .setValue(amount)
-                            snapshot.ref.child("complete").setValue(false)
+                            snapshot.ref.child("complete")//.setValue(false)
 
                             finish()
                         }
