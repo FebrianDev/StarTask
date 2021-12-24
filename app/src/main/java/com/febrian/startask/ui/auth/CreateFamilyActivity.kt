@@ -24,6 +24,7 @@ class CreateFamilyActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCreateFamilyBinding
     var role = ""
+    var nameRole = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

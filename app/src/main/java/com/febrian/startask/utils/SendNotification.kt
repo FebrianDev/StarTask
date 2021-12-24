@@ -81,8 +81,8 @@ class SendNotification : BroadcastReceiver() {
         val intent = Intent(context, SendNotification::class.java)
 
         val calendar = Calendar.getInstance()
-        calendar[Calendar.HOUR_OF_DAY] = 9
-        calendar[Calendar.MINUTE] = 1
+        calendar[Calendar.HOUR_OF_DAY] = 6
+        calendar[Calendar.MINUTE] = 0
         calendar[Calendar.SECOND] = 0
 
         val pendingIntent = PendingIntent.getBroadcast(context, 1, intent, 0)

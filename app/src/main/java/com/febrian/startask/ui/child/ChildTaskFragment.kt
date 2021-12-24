@@ -100,7 +100,7 @@ class ChildTaskFragment : Fragment() {
             @SuppressLint("SetTextI18n")
             override fun onDataChange(snapshot: DataSnapshot) {
                 _isLoading.value = false
-                binding.coin.text = "Coin " + snapshot.child("coin").value.toString()
+                binding.coin.setText("Coin " + snapshot.child("coin").value.toString())
                 for (taskFamily in snapshot.child("task").children) {
                     val all = taskFamily.getValue(Task::class.java)
                     if (all!!.complete == "0")
@@ -128,7 +128,7 @@ class ChildTaskFragment : Fragment() {
         dbref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 _isLoading.value = false
-                binding.coin.text = "Coin " + snapshot.child("coin").value.toString()
+                binding.coin.setText("Coin " + snapshot.child("coin").value.toString())
                 for (taskFamily in snapshot.child("task").children) {
                     val all = taskFamily.getValue(Task::class.java)
                     if (all!!.complete == "1") {
@@ -157,7 +157,7 @@ class ChildTaskFragment : Fragment() {
         dbref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 _isLoading.value = false
-                binding.coin.text = "Coin " + snapshot.child("coin").value.toString()
+                binding.coin.setText("Coin " + snapshot.child("coin").value.toString())
                 for (taskFamily in snapshot.child("task").children) {
                     val all = taskFamily.getValue(Task::class.java)
                     childTaskArrayList.add(all!!)

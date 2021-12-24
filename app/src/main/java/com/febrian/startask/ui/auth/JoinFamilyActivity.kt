@@ -9,9 +9,9 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.febrian.startask.databinding.ActivityJoinFamilyBinding
 import com.febrian.startask.ui.child.ChildHomeActivity
 import com.febrian.startask.ui.parent.ParentHomeActivity
-import com.febrian.startask.databinding.ActivityJoinFamilyBinding
 import com.febrian.startask.utils.Constant
 import com.febrian.startask.utils.Roles
 import com.google.firebase.database.DataSnapshot
@@ -41,30 +41,18 @@ class JoinFamilyActivity : AppCompatActivity() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     Toast.makeText(applicationContext, familyId, Toast.LENGTH_LONG).show()
                     if (snapshot.exists()) {
-                        if (snapshot.child(role).value.toString() == name) {
-                            //if name exist
-                            Toast.makeText(applicationContext, "Name exist", Toast.LENGTH_LONG)
-                                .show()
-                            if (role == Constant.MOTHER || role == Constant.FATHER) {
-                                Toast.makeText(
-                                    applicationContext,
-                                    "Parent " + role,
-                                    Toast.LENGTH_LONG
-                                )
-                                    .show()
+                        Toast.makeText(applicationContext, role, Toast.LENGTH_LONG).show()
+                        if (snapshot.child(role).value.toString() == name || snapshot.child("Child")
+                                .child(name).exists()
+                        ) {
+                            if (role == Constant.FATHER || role == Constant.MOTHER) {
                                 targetIntent(ParentHomeActivity(), name, familyId, role)
                             } else {
-                                Toast.makeText(
-                                    applicationContext,
-                                    "Child "
-                                            + role, Toast.LENGTH_LONG
-                                )
-                                    .show()
                                 targetIntent(ChildHomeActivity(), name, familyId, role)
                             }
                         } else {
                             //if name not exist
-                            Toast.makeText(applicationContext, "name not Exist!", Toast.LENGTH_LONG)
+                            Toast.makeText(applicationContext, "Name not Exist!", Toast.LENGTH_LONG)
                                 .show()
                             val check = addRole(role, name, snapshot)
 
@@ -134,8 +122,13 @@ class JoinFamilyActivity : AppCompatActivity() {
 
         binding.role.adapter = adapter
 
-        binding.role.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        binding.role.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 role = roles[position]
             }
 

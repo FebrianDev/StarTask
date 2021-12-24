@@ -61,7 +61,7 @@ class DetailTaskActivity : AppCompatActivity() {
                                 .setValue(taskName)
                             snapshot.ref.child("amount")
                                 .setValue(amount)
-                            snapshot.ref.child("complete").setValue(false)
+                            snapshot.ref.child("complete").setValue("0")
 
                             finish()
                         }
