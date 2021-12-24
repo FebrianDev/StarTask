@@ -9,9 +9,9 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.febrian.startask.databinding.ActivityCreateFamilyBinding
 import com.febrian.startask.ui.child.ChildHomeActivity
 import com.febrian.startask.ui.parent.ParentHomeActivity
-import com.febrian.startask.databinding.ActivityCreateFamilyBinding
 import com.febrian.startask.utils.Constant
 import com.febrian.startask.utils.CreateFamilyId
 import com.febrian.startask.utils.Roles
@@ -24,7 +24,6 @@ class CreateFamilyActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCreateFamilyBinding
     var role = ""
-    var nameRole = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -92,6 +91,7 @@ class CreateFamilyActivity : AppCompatActivity() {
                 snapshot.ref.child(role).setValue(name)
         }
     }
+
     private fun setupCustomSpinner() {
 
         val adapter = SpinnerArrayAdapter(this, Roles.list!!)
@@ -110,8 +110,13 @@ class CreateFamilyActivity : AppCompatActivity() {
 
         binding.role.adapter = adapter
 
-        binding.role.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        binding.role.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 role = roles[position]
             }
 

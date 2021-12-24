@@ -4,31 +4,36 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon_hd"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/icon_hd"
         android:supportsRtl="true"
         android:theme="@style/Theme.StarTask">
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.child.RewardActivity"
             android:parentActivityName=".ui.child.ChildHomeActivity"
             android:exported="true" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.detail.DetailRewardActivity"
             android:parentActivityName=".ui.parent.ParentHomeActivity"
             android:exported="true" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.parent.reward.CreateRewardActivity"
             android:exported="true"
             android:parentActivityName=".ui.parent.ParentHomeActivity"
             />
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.detail.DetailTaskActivity"
             android:parentActivityName=".ui.parent.ParentHomeActivity"
             android:exported="true" />
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/FullScreen"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,28 +45,34 @@
             android:theme="@style/FullScreen"
             android:name=".ui.child.ChildHomeActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_child_home" />
         <activity
             android:name=".ui.parent.ParentHomeActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/FullScreen"
             android:label="@string/title_activity_parent_home" />
         <activity
             android:name=".ui.parent.task.CreateTaskActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:parentActivityName=".ui.parent.ParentHomeActivity"
             />
         <activity
             android:name=".ui.auth.JoinFamilyActivity"
             android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ui.auth.CreateFamilyActivity"
             android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/FullScreen"
+            android:screenOrientation="portrait"
             android:exported="true" />
 
         <receiver

@@ -27,9 +27,7 @@
         android:id="@+id/img_item_avatar"
         android:layout_width="137dp"
         android:layout_height="136dp"
-        android:layout_marginStart="126dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="126dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/app_bar_home"
@@ -45,7 +43,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@+id/app_bar_home" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_task_name" />
 
     <TextView
         android:id="@+id/tv_task_familyId"
@@ -83,7 +81,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
         android:textSize="30sp"
+        android:textStyle="bold"
         android:text="@string/name"
+        android:layout_marginTop="8dp"
         android:textAlignment="center"
         android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/img_item_avatar"
@@ -98,6 +98,7 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:layout_marginTop="12dp"
         app:layout_constraintTop_toBottomOf="@+id/tv_task_familyId"
         tools:layout_editor_absoluteX="32dp" />
 
@@ -119,7 +120,7 @@
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/tv_task_role"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="12dp"
         android:layout_marginStart="24dp"/>
 
     <androidx.appcompat.widget.SwitchCompat

@@ -42,21 +42,31 @@ class JoinFamilyActivity : AppCompatActivity() {
                 FirebaseDatabase.getInstance(Constant.URL).reference.child("Family").child(familyId)
             database.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    Toast.makeText(applicationContext, familyId, Toast.LENGTH_LONG).show()
                     if (snapshot.exists()) {
-                        Toast.makeText(applicationContext, role, Toast.LENGTH_LONG).show()
                         if (snapshot.child(role).value.toString() == name || snapshot.child("Child")
-                                .child(name).exists()
+                                .child(name).child("name").value.toString() == name
                         ) {
-                            if (role == Constant.FATHER || role == Constant.MOTHER) {
+                            if ((role == Constant.FATHER || role == Constant.MOTHER) && snapshot.child(
+                                    role
+                                ).value.toString() == name
+                            ) {
                                 targetIntent(ParentHomeActivity(), name, familyId, role)
-                            } else {
+                            } else if ((role == Constant.SON || role == Constant.DAUGHTER) && snapshot.child(
+                                    "Child"
+                                )
+                                    .child(name).child("name").value.toString() == name
+                            ) {
                                 targetIntent(ChildHomeActivity(), name, familyId, role)
+                            } else {
+                                Toast.makeText(
+                                    applicationContext,
+                                    "Name doesn't match",
+                                    Toast.LENGTH_LONG
+                                ).show()
                             }
                         } else {
                             //if name not exist
-                            Toast.makeText(applicationContext, "Name not Exist!", Toast.LENGTH_LONG)
-                                .show()
+
                             val check = addRole(role, name, snapshot)
 
                             if (check) {
@@ -111,7 +121,7 @@ class JoinFamilyActivity : AppCompatActivity() {
 
         val adapter = SpinnerArrayAdapter(this, Roles.list!!)
         binding.role.adapter = adapter
-        // TODO Assignment: add listener to the customSpinner
+
     }
 
     private fun setupSimpleSpinner() {
