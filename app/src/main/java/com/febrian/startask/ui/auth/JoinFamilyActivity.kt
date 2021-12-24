@@ -28,6 +28,9 @@ class JoinFamilyActivity : AppCompatActivity() {
         binding = ActivityJoinFamilyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.title = "Join Family"
+
         setupSimpleSpinner()
 
         setupCustomSpinner()

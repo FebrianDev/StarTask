@@ -35,6 +35,9 @@ class RewardActivity : AppCompatActivity() {
         binding = ActivityRewardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.title = "Reward"
+
         preferences = applicationContext
             .getSharedPreferences(Constant.SharedPreferences, Context.MODE_PRIVATE)
         familyId = preferences.getString(Constant.FAMILY_ID, "").toString()

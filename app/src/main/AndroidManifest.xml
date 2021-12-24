@@ -11,19 +11,20 @@
         android:theme="@style/Theme.StarTask">
         <activity
             android:name=".ui.child.RewardActivity"
+            android:parentActivityName=".ui.child.ChildHomeActivity"
             android:exported="true" />
         <activity
             android:name=".ui.detail.DetailRewardActivity"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".ui.parent.ParentHomeActivity"
             android:exported="true" />
         <activity
             android:name=".ui.parent.reward.CreateRewardActivity"
             android:exported="true"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".ui.parent.ParentHomeActivity"
             />
         <activity
             android:name=".ui.detail.DetailTaskActivity"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".ui.parent.ParentHomeActivity"
             android:exported="true" />
         <activity
             android:name=".SplashScreenActivity"
@@ -48,13 +49,15 @@
         <activity
             android:name=".ui.parent.task.CreateTaskActivity"
             android:exported="true"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".ui.parent.ParentHomeActivity"
             />
         <activity
             android:name=".ui.auth.JoinFamilyActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="true" />
         <activity
             android:name=".ui.auth.CreateFamilyActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

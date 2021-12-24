@@ -31,6 +31,9 @@ class CreateFamilyActivity : AppCompatActivity() {
         binding = ActivityCreateFamilyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.title = "Create Family"
+
         setupSimpleSpinner()
 
         setupCustomSpinner()
