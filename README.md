@@ -33,3 +33,9 @@ https://www.canva.com/design/DAEzbMv9RQA/hVWyJ-rK_GdmeA7tfsbrDA/view?utm_content
 
 ## Demo Video Link
 https://drive.google.com/file/d/1KG5tiUpadqrbmvXLCmwlNLu-eEEXN4c6/view?usp=sharing
+
+## Contributor
+<ul>
+  <li><a href="https://github.com/FebrianDev/">Febrian</a></li>
+  <li><a href="https://github.com/AlfindoRizkiSubekti">Alfindo Rizky Subekti</a></li>
+  </ul>
